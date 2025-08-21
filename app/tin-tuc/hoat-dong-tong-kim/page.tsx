@@ -48,11 +48,6 @@ export default function TongKimPage() {
           </header>
 
           <div className="prose prose-lg max-w-none">
-            {/* <p className="text-lg text-gray-700 mb-6">
-              Bạch Hổ Đường là hoạt động đặc biệt dành cho các game thủ từ cấp
-              25 trở lên, diễn ra hàng ngày với nhiều phần thưởng hấp dẫn.
-            </p> */}
-
             <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">
               Thời gian diễn ra
             </h2>

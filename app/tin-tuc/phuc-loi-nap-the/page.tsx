@@ -22,6 +22,7 @@ export default function PhucLoiNapThePage() {
             Quay lại tin tức
           </Button>
         </Link>
+
         <article className="rounded-2xl p-8 shadow-lg bg-white">
           <header className="mb-8">
             <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
@@ -45,639 +46,85 @@ export default function PhucLoiNapThePage() {
               </div>
             </div>
           </header>
+
           <div className="prose prose-lg max-w-none">
-            <ul className="list-disc list-inside mb-6 space-y-2 text-gray-700">
-              <li className="uppercase font-bold text-lg">
-                TỶ LỆ NẠP THẺ: 100.000 VNĐ = 100 Xu = 200 Vạn Đồng và 200 Vạn
-                Mốc Tích Luỹ
-              </li>
-            </ul>
-          </div>
-          <div className="event-container">
-            <div className="reward-blocks">
-              <div className="milestones-noneactive">1000 vạn đồng</div>
-              <div className="rewardss">
-                <div className="items badges">
-                  Đặc quyền tu luyện mật tịch nhanh (10 vạn đồng/lượt)
-                </div>
-                <div className="items currencys">20 vạn đồng khoá</div>
-                <div className="items currencys">70 vạn bạc khoá</div>
-                <div className="items currencys">
-                  1 lệnh bài mở rộng rương (2)
-                </div>
-                <div className="items currencys">
-                  1 lệnh bài mở rộng rương (3)
-                </div>
-                <div className="items currencys">
-                  1 lệnh bài mở rộng rương (4)
-                </div>
-                <div className="items highlights">Mặt Nạ Tài Phú Ngất Trời</div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>15 điểm tài phú</li>
-                  <li>Chí Mạng +10</li>
-                </ul>
-              </div>
+            <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-lg mb-6">
+              <h3 className="font-bold text-yellow-800 text-lg mb-2">
+                Tỷ lệ quy đổi:
+              </h3>
+              <p className="text-yellow-700">
+                100.000 VNĐ = 100 Xu = 200 Vạn Đồng và 200 Vạn Mốc Tích Luỹ
+              </p>
             </div>
-            <div className="reward-blocks">
-              <div className="milestones-noneactive">2000 vạn đồng</div>
-              <div className="rewardss">
-                <div className="items badges">
-                  Danh Hiệu Thành Viên Thân Thiết + Vòng Sáng
+
+            <div className="space-y-6">
+              {rewardTiers.map((tier, index) => (
+                <div
+                  key={index}
+                  className={`bg-white rounded-xl border ${
+                    tier.active ? "border-emerald-200" : "border-gray-200"
+                  } shadow-sm overflow-hidden`}
+                >
+                  <div
+                    className={`px-4 py-3 font-medium ${
+                      tier.active
+                        ? "bg-emerald-50 text-emerald-800"
+                        : "bg-gray-50 text-gray-800"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span>{tier.milestone} vạn đồng</span>
+                      {tier.unlockTime && (
+                        <span className="text-sm text-gray-600">
+                          {tier.unlockTime}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="p-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {tier.rewards.map((reward, rewardIndex) => (
+                        <div
+                          key={rewardIndex}
+                          className={`flex items-start gap-2 ${
+                            reward.type === "special"
+                              ? "text-purple-600"
+                              : reward.type === "currency"
+                              ? "text-emerald-600"
+                              : "text-blue-600"
+                          }`}
+                        >
+                          <span>•</span>
+                          <span>{reward.text}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {tier.stats && (
+                      <div className="mt-4 bg-red-50 rounded-lg p-4">
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-red-600 text-sm">
+                          {tier.stats.map((stat, statIndex) => (
+                            <li
+                              key={statIndex}
+                              className="flex items-center gap-2"
+                            >
+                              <span>•</span>
+                              <span>{stat}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
                 </div>
-                <div className="items highlights">
-                  1 Lệnh Bài Uy Danh Giang Hồ
-                </div>
-                <div className="items currencys">3 Túi 24 ô</div>
-                <div className="items currencys">30 vạn đồng khoá</div>
-                <div className="items currencys">90 vạn bạc khoá</div>
-                <div className="items highlights">Mã Bài Bôn Tiêu</div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>100 điểm tài phú</li>
-                  <li>Tốc độ di chuyển +90%</li>
-                  <li>Kháng tất cả +5</li>
-                  <li>Né tránh +5</li>
-                  <li>Thể lực tối đa +90 điểm</li>
-                  <li>Sinh lực tối đa +800 điểm</li>
-                </ul>
-              </div>
+              ))}
             </div>
-            <div className="reward-blocks">
-              <div className="milestones-noneactive">4000 vạn đồng</div>
-              <div className="rewardss">
-                <div className="items badges">1000 tiền du long (khóa)</div>
-                <div className="items currencys">40 vạn đồng khoá</div>
-                <div className="items currencys">100 vạn bạc khoá</div>
-                <div className="items currencys">2000 NHHT (khoá)</div>
-                <div className="items currencys">3 lần chuyển cường hóa</div>
-                <div className="items highlights">
-                  Mặt Nạ Hàng Long Phục Hổ – Thường
-                </div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>1000 điểm tài phú</li>
-                  <li>Phát huy lực tấn công cơ bản +2%</li>
-                  <li>Phát huy lực tấn công kỹ năng +2%</li>
-                  <li>Chí mạng +15</li>
-                </ul>
-              </div>
-            </div>
-            <div className="reward-blocks ">
-              <div className="milestones-noneactive text-center">
-                <span>
-                  {" "}
-                  6000 vạn đồng <br />
-                  (Đang kích hoạt)
-                </span>
-              </div>
-              <div className="rewardss">
-                <div className="items badges">
-                  Danh Hiệu Nhà Tài Trợ Đồng + Vòng Sáng
-                  <br />
-                  Mở khóa thú cưới mốc nạp 2000 vạn
-                </div>
-                <div className="items badges">1000 tiền du long (khóa)</div>
-                <div className="items currencys">50 vạn đồng khoá</div>
-                <div className="items currencys">110 vạn bạc khoá</div>
-                <div className="items currencys">3000 NHHT (khoá)</div>
-                <div className="items currencys">3 lần chuyển cường hóa</div>
-                <div className="items highlights">
-                  Mã Bài Tuyệt Thế Tuyết Vũ
-                </div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>300 điểm tài phú</li>
-                  <li>Tốc độ di chuyển +95%</li>
-                  <li>Kháng tất cả +10</li>
-                  <li>Né tránh +10</li>
-                  <li>Sinh lực tối đa +800 điểm</li>
-                  <li>Thể lực tối đa +90 điểm</li>
-                  <li>Phát huy lực tấn công cơ bản +2%</li>
-                  <li>Chịu sát thương chí mạng –2%</li>
-                </ul>
-              </div>
-            </div>
-            <div className="reward-blocks ">
-              <div className="milestones-active text-center">
-                <span>
-                  {" "}
-                  10000 vạn đồng
-                  <br />
-                  (10 ngày sau Open)
-                </span>
-              </div>
-              <div className="rewardss">
-                <div className="items badges">
-                  Đặc quyền nhận mật tịch trung miễn phí
-                  <br />
-                  Mở khóa mặt nạ mốc 4000
-                </div>
-                <div className="items badges">1000 tiền du long (khóa)</div>
-                <div className="items currencys">80 vạn đồng khoá</div>
-                <div className="items currencys">150 vạn bạc khoá</div>
-                <div className="items currencys">4000 NHHT (khoá)</div>
-                <div className="items currencys">3 lần chuyển cường hóa</div>
-                <div className="items highlights">
-                  Mặt Nạ Hàng Long Phục Hổ – Quý
-                </div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>3000 điểm tài phú</li>
-                  <li>Phát huy lực tấn công cơ bản +5%</li>
-                  <li>Phát huy lực tấn công kỹ năng +5%</li>
-                  <li>Tấn công khi đánh chí mạng +5%</li>
-                  <li>Chí mạng +25</li>
-                </ul>
-              </div>
-            </div>
-            <div className="reward-blocks ">
-              <div className="milestones-active text-center">
-                <span>
-                  {" "}
-                  14000 vạn đồng
-                  <br />
-                  (17 ngày sau Open)
-                </span>
-              </div>
-              <div className="rewardss">
-                <div className="items badges">
-                  Danh Hiệu Nhà Tài Trợ Bạc + Vòng Sáng
-                  <br />
-                  Đặc quyền nhận mật tịch cao miễn phí
-                  <br />
-                  Mở khóa thú cưỡi mốc 6000 vạn
-                </div>
-                <div className="items badges">1000 tiền du long (khóa)</div>
-                <div className="items currencys">100 vạn đồng khoá</div>
-                <div className="items currencys">150 vạn bạc khoá</div>
-                <div className="items currencys">5000 NHHT (khoá)</div>
-                <div className="items currencys">3 lần chuyển cường hóa</div>
-                <div className="items highlights">Mã Bài Trục Nhật</div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>1000 điểm tài phú</li>
-                  <li>Tốc độ di chuyển +100%</li>
-                  <li>Kháng tất cả +20</li>
-                  <li>Né tránh +20</li>
-                  <li>Sinh lực tối đa +800 điểm</li>
-                  <li>Thể lực tối đa +120 điểm</li>
-                  <li>Kỹ năng di hình hoán ảnh +1</li>
-                  <li>Phát huy lực tấn công cơ bản +5%</li>
-                  <li>Chịu sát thương chí mạng -3%</li>
-                </ul>
-              </div>
-            </div>
-            <div className="reward-blocks ">
-              <div className="milestones-active text-center">
-                <span>
-                  {" "}
-                  18000 vạn đồng
-                  <br />
-                  (24 ngày sau Open)
-                </span>
-              </div>
-              <div className="rewardss">
-                <div className="items badges">
-                  Mở khóa mặt nạ mốc 10.000 vạn
-                </div>
-                <div className="items badges">2000 tiền du long (khóa)</div>
-                <div className="items currencys">150 vạn đồng khoá</div>
-                <div className="items currencys">170 vạn bạc khoá</div>
-                <div className="items currencys">6000 NHHT (khoá)</div>
-                <div className="items currencys">3 lần chuyển cường hóa</div>
-                <div className="items highlights">
-                  Mặt Nạ Hàng Long Phục Hổ – Hiếm
-                </div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>5000 điểm tài phú</li>
-                  <li>Phát huy lực tấn công cơ bản +8%</li>
-                  <li>Phát huy lực tấn công kỹ năng +8%</li>
-                  <li>Tấn công khi đánh chí mạng +8%</li>
-                  <li>Thiên hạ vô song +1</li>
-                  <li>Chí mạng +40</li>
-                  <li>Kỹ năng phái +1 cấp</li>
-                </ul>
-              </div>
-            </div>
-            <div className="reward-blocks ">
-              <div className="milestones-active text-center">
-                <span>
-                  {" "}
-                  23000 vạn đồng
-                  <br />
-                  (31 ngày sau Open)
-                </span>
-              </div>
-              <div className="rewardss">
-                <div className="items badges">
-                  Danh Hiệu Nhà Tài Trợ Vàng + Vòng Sáng
-                  <br />
-                  Đặc quyền nhận phi phong miễn phí
-                  <br />
-                  Mở khóa thú cưỡi mốc nạp 14.000 vạn
-                </div>
-                <div className="items badges">2000 tiền du long (khóa)</div>
-                <div className="items currencys">170 vạn đồng khoá</div>
-                <div className="items currencys">200 vạn bạc khoá</div>
-                <div className="items currencys">7000 NHHT (khoá)</div>
-                <div className="items currencys">3 lần chuyển cường hóa</div>
-                <div className="items highlights">Mã Bài Phiên Vũ</div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>3320 điểm tài phú</li>
-                  <li>Tốc độ di chuyển +100%</li>
-                  <li>Kháng tất cả + 30</li>
-                  <li>Né tránh + 30</li>
-                  <li>Thể lực tối đa +120 điểm</li>
-                  <li>Sinh lực tối đa +800 điểm</li>
-                  <li>Di hình hoán ảnh cấp +1</li>
-                  <li>Phát huy lực tấn công cơ bản +8%</li>
-                  <li>Chịu sát thương chí mạng -6%</li>
-                </ul>
-              </div>
-            </div>
-            <div className="reward-blocks ">
-              <div className="milestones-active text-center">
-                <span>
-                  {" "}
-                  28000 vạn đồng
-                  <br />
-                  (38 ngày sau Open)
-                </span>
-              </div>
-              <div className="rewardss">
-                <div className="items badges">
-                  Danh Hiệu Nhà Tài Trợ Bạch Kim + Vòng Sáng
-                  <br />
-                  Mở khóa mặt nạ mốc 19.000 vạn
-                </div>
-                <div className="items badges">2000 tiền du long (khóa)</div>
-                <div className="items currencys">200 vạn đồng khoá</div>
-                <div className="items currencys">250 vạn bạc khoá</div>
-                <div className="items currencys">8000 NHHT (khoá)</div>
-                <div className="items currencys">3 lần chuyển cường hóa</div>
-                <div className="items highlights">
-                  Mặt Nạ Hàng Long Phục Hổ – tuyệt
-                </div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>6000 điểm tài phú</li>
-                  <li>Phát huy lực tấn công cơ bản +11%</li>
-                  <li>Phát huy lực tấn công kỹ năng +11%</li>
-                  <li>Tấn công khi đánh chí mạng +11%</li>
-                  <li>Thiên hạ vô song +1</li>
-                  <li>Chí mạng +60</li>
-                  <li>Kỹ năng phái +1</li>
-                  <li>Phát huy lực tấn công cơ bản +8%</li>
-                  <li>Kỹ năng bí kíp +1</li>
-                </ul>
-              </div>
-            </div>
-            <div className="reward-blocks ">
-              <div className="milestones-active text-center">
-                <span>
-                  {" "}
-                  34000 vạn đồng
-                  <br />
-                  (45 ngày sau Open)
-                </span>
-              </div>
-              <div className="rewardss">
-                <div className="items badges">
-                  Mở khóa thú cưỡi mốc 23.000 vạn
-                </div>
-                <div className="items badges">2000 tiền du long (khóa)</div>
-                <div className="items currencys">230 vạn đồng khoá</div>
-                <div className="items currencys">250 vạn bạc khoá</div>
-                <div className="items currencys">9000 NHHT (khoá)</div>
-                <div className="items currencys">3 lần chuyển cường hóa</div>
-                <div className="items highlights">Mã Bài Ức Vân</div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>5000 điểm tài phú</li>
-                  <li>Tốc độ di chuyển +110%</li>
-                  <li>Kháng tất cả +45</li>
-                  <li>Né tránh + 45</li>
-                  <li>Thể lực tối đa +120 điểm</li>
-                  <li>Sinh lực tối đa +800 điểm</li>
-                  <li>Di hình hoán ảnh cấp + 1</li>
-                  <li>Phát huy lực tấn công cơ bản +11%</li>
-                  <li>Chịu sát thương chí mạng -9%</li>
-                  <li>Hiệu Suất Phục hồi sinh lực +3%</li>
-                  <li>Kỹ năng đồng hành + 1</li>
-                </ul>
-              </div>
-            </div>
-            <div className="reward-blocks ">
-              <div className="milestones-active text-center">
-                <span>
-                  {" "}
-                  40000 vạn đồng
-                  <br />
-                  (53 ngày sau Open)
-                </span>
-              </div>
-              <div className="rewardss">
-                <div className="items badges">
-                  Danh Hiệu Nhà Tài Trợ Kim Cương + Vòng Sáng <br />
-                  Mở khóa mặt nạ mốc nạp 28.000 vạn
-                </div>
-                <div className="items badges">2000 tiền du long (khóa)</div>
-                <div className="items currencys">250 vạn đông khoá</div>
-                <div className="items currencys">300 vạn bạc khoá</div>
-                <div className="items currencys">10.000 NHHT (khoá)</div>
-                <div className="items currencys">3 lần chuyển cường hóa</div>
-                <div className="items highlights">
-                  Mặt Hàng Long Phục Hổ – Cực
-                </div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>7000 điểm tài phú</li>
-                  <li>Phát huy lực tấn công cơ bản +14%</li>
-                  <li>Phát huy lực tấn công kỹ năng +14%</li>
-                  <li>Tấn công khi đánh chí mạng +14%</li>
-                  <li>Chí mạng +80</li>
-                  <li>Thiên hạ vô song +1</li>
-                  <li>Kỹ năng phái +1</li>
-                  <li>Kỹ năng đồng hành +1</li>
-                  <li>Kỹ năng bí kíp +1</li>
-                </ul>
-              </div>
-            </div>
-            <div className="reward-blocks ">
-              <div className="milestones-active text-center">
-                <span>
-                  {" "}
-                  46000 vạn đồng
-                  <br />
-                  (61 ngày sau Open)
-                </span>
-              </div>
-              <div className="rewardss">
-                <div className="items badges">
-                  Mở khoá ngựa mốc nạp 34.000 vạn
-                </div>
-                <div className="items badges">2000 tiền du long (khóa)</div>
-                <div className="items currencys">300 vạn đông khoá</div>
-                <div className="items currencys">500 vạn bạc khoá</div>
-                <div className="items currencys">10.000 NHHT (khoá)</div>
-                <div className="items currencys">3 lần chuyển cường hóa</div>
-                <div className="items highlights">Mã Bài</div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>6000 điểm tài phú</li>
-                  <li>Tốc độ di chuyển + 110%</li>
-                  <li>Kháng tất cả +60</li>
-                  <li>Né tránh + 60</li>
-                  <li>Thể lực tối đa +120 điểm</li>
-                  <li>Sinh lực tối đa +800 điểm</li>
-                  <li>Di hình hoán ảnh cấp +1</li>
-                  <li>Phát huy lực tấn công cơ bản +14%</li>
-                  <li>Chịu sát thương chí mạng -12%</li>
-                  <li>Hiệu suất phục hồi sinh lực +5%</li>
-                  <li>Kỹ năng đồng hành +1</li>
-                  <li>Kỹ năng bí kiếp +1</li>
-                </ul>
-              </div>
-            </div>
-            <div className="reward-blocks ">
-              <div className="milestones-active text-center">
-                <span>
-                  {" "}
-                  52000 vạn đồng
-                  <br />
-                  (69 ngày sau Open)
-                </span>
-              </div>
-              <div className="rewardss">
-                <div className="items badges">
-                  Danh Hiệu Nhà Tài Trợ Kim Cương 2 + Vòng Sáng
-                  <br />
-                  Mở khoá mặt nạ mốc 40.000 vạn
-                </div>
-                <div className="items badges">2500 tiền du long (khóa)</div>
-                <div className="items currencys">400 vạn đồng khoá</div>
-                <div className="items currencys">600 vạn bạc khoá</div>
-                <div className="items currencys">10.000 NHHT (khoá)</div>
-                <div className="items currencys">3 lần chuyển cường hóa</div>
-                <div className="items highlights">
-                  Mặt Nạ Hàng Long Phục Hổ – Siêu Phẩm
-                </div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>8000 điểm tài phú</li>
-                  <li>Phát huy lực tấn công cơ bản +17%</li>
-                  <li>Phát huy lực tấn công kỹ năng +17%</li>
-                  <li>Tấn công khi đánh chí mạng +17%</li>
-                  <li>Chí mạng +100</li>
-                  <li>Thiên hạ vô song +1</li>
-                  <li>Kỹ năng phái +2</li>
-                  <li>Kỹ năng đồng hành +1</li>
-                  <li>Kỹ năng bí kíp + 1</li>
-                </ul>
-              </div>
-            </div>
-            <div className="reward-blocks ">
-              <div className="milestones-active text-center">
-                <span>
-                  {" "}
-                  58000 vạn đồng
-                  <br />
-                  (77 ngày sau Open)
-                </span>
-              </div>
-              <div className="rewardss">
-                <div className="items badges">Mở khoá ngựa mốc 46.000 vạn</div>
-                <div className="items badges">2500 tiền du long (khóa)</div>
-                <div className="items currencys">400 vạn đồng khoá</div>
-                <div className="items currencys">600 vạn bạc khoá</div>
-                <div className="items currencys">10.000 NHHT (khoá)</div>
-                <div className="items currencys">3 lần chuyển cường hóa</div>
-                <div className="items highlights">Mã Bài</div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>7000 điểm tài phú</li>
-                  <li>Tốc độ di chuyển +110%</li>
-                  <li>Kháng tất cả +75 điểm</li>
-                  <li>Né tránh +75 điểm</li>
-                  <li>Sinh lực tối đa +800 điểm</li>
-                  <li>Thể lực tối đa +120 điểm</li>
-                  <li>Di hình hoán ảnh +1 cấp</li>
-                  <li>Phát huy lực tấn công cơ bản +17%</li>
-                  <li>Chịu sát thương chí mạng -15%</li>
-                  <li>Hiệu suất phục hồi sinh lực +5%</li>
-                  <li>Kỹ năng đồng hành +1</li>
-                  <li>Kỹ năng bí kíp +1</li>
-                  <li>Kỹ năng phái +1</li>
-                </ul>
-              </div>
-            </div>
-            <div className="reward-blocks ">
-              <div className="milestones-active text-center">
-                <span>
-                  {" "}
-                  64000 vạn đồng
-                  <br />
-                  (85 ngày sau Open)
-                </span>
-              </div>
-              <div className="rewardss">
-                <div className="items badges">
-                  Danh Hiệu Nhà Tài Trợ Kim Cương 3 + vòng sáng <br />
-                  Mở khoá mặt nạ mốc 52.000 vạn
-                </div>
-                <div className="items badges">3000 tiền du long (khóa)</div>
-                <div className="items currencys">600 vạn đồng khoá</div>
-                <div className="items currencys">800 vạn bạc khoá</div>
-                <div className="items currencys">10.000 NHHT (khoá)</div>
-                <div className="items currencys">3 lần chuyển cường hóa</div>
-                <div className="items highlights">
-                  Mặt Nạ Hàng Long Phục Hổ – Cực Phẩm
-                </div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>9000 điểm tài phú</li>
-                  <li>Phát huy lực tấn công cơ bản +20%</li>
-                  <li>Phát huy lực tấn công kỹ năng +20%</li>
-                  <li>Tấn công khi đánh chí mạng +20%</li>
-                  <li>Chí mạng +120</li>
-                  <li>Thiên hạ vô song +1</li>
-                  <li>Kỹ năng phái +2</li>
-                  <li>Kỹ năng đồng hành +1</li>
-                  <li>Kỹ năng bí kíp + 2</li>
-                </ul>
-              </div>
-            </div>
-            <div className="reward-blocks ">
-              <div className="milestones-active text-center">
-                <span>
-                  {" "}
-                  72000 vạn đồng
-                  <br />
-                  (94 ngày sau Open)
-                </span>
-              </div>
-              <div className="rewardss">
-                <div className="items badges">
-                  Danh Hiệu Nhà Trài Trợ Kim Cương 4 + Vòng Sáng <br />
-                  Mở khoá ngựa mốc nạp 58.000 vạn
-                </div>
-                <div className="items badges">4000 tiền du long (khóa)</div>
-                <div className="items currencys">700 vạn đồng khoá</div>
-                <div className="items currencys">800 vạn bạc khoá</div>
-                <div className="items currencys">10.000 NHHT (khoá)</div>
-                <div className="items currencys">5 lần chuyển cường hóa</div>
-                <div className="items highlights">Mã Bài</div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>8000 điểm tài phú</li>
-                  <li>Tốc độ di chuyển 110%</li>
-                  <li>Kháng Tất cả +95 điểm</li>
-                  <li>Né tránh + 95 điểm</li>
-                  <li>Sinh lực tối đa +800 điểm</li>
-                  <li>Thể lực tối đa + 120 điểm</li>
-                  <li>Di hình hoán ảnh + 1 cấp</li>
-                  <li>Phát huy lực tấn công cơ bản +20%</li>
-                  <li>Chịu sát thương chí mạng -18%</li>
-                  <li>Hiệu suất phục hồi sinh lực +10%</li>
-                  <li>Kỹ năng đồng hành +2</li>
-                  <li>Kỹ năng bí kíp +1</li>
-                  <li>Kỹ năng phái +1</li>
-                </ul>
-              </div>
-            </div>
-            <div className="reward-blocks ">
-              <div className="milestones-active text-center">
-                <span>
-                  {" "}
-                  80000 vạn đồng
-                  <br />
-                  (103 ngày sau Open)
-                </span>
-              </div>
-              <div className="rewardss">
-                <div className="items badges">
-                  Danh Hiệu Tuyệt ĐỈnh Đại Phú Hào + Vòng Sáng <br />
-                  Mở khoá mật nạ mốc 64.000 vạn
-                </div>
-                <div className="items badges">20 HTB khóa</div>
-                <div className="items badges">4000 tiền du long (khóa)</div>
-                <div className="items currencys">700 vạn đồng khoá</div>
-                <div className="items currencys">1000 vạn bạc khoá</div>
-                <div className="items currencys">10.000 NHHT (khoá)</div>
-                <div className="items currencys">5 lần chuyển cường hóa</div>
-                <div className="items highlights">Mặt Nạ Thiên Hạ Chí Tôn</div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>10.000 điểm tài phú</li>
-                  <li>Phát huy lực tấn công cơ bản +24%</li>
-                  <li>Phát huy lực tấn công cơ bản +24%</li>
-                  <li>Tấn công khi đánh chí mạng +24%</li>
-                  <li>Chí mạng +150</li>
-                  <li>Thiên hạ vô song +1</li>
-                  <li>Kỹ năng phái +2</li>
-                  <li>Kỹ năng đồng hành +2</li>
-                  <li>Kỹ năng bí kíp +2</li>
-                </ul>
-              </div>
-            </div>
-            <div className="reward-blocks ">
-              <div className="milestones-active text-center">
-                <span>
-                  {" "}
-                  90000 vạn đồng
-                  <br />
-                  (113 ngày sau Open)
-                </span>
-              </div>
-              <div className="rewardss">
-                <div className="items badges">
-                  Danh Hiệu CỬu Ngũ Chí Tôn + Vòng Sáng <br />
-                  Mở khoá ngựa mốc 72.000 vạn
-                </div>
-                <div className="items badges">30 HTB khóa</div>
-                <div className="items badges">5000 tiền du long (khóa)</div>
-                <div className="items currencys">700 vạn đồng khoá</div>
-                <div className="items currencys">1000 vạn bạc khoá</div>
-                <div className="items currencys">10.000 NHHT (khoá)</div>
-                <div className="items currencys">10 lần chuyển cường hóa</div>
-                <div className="items highlights">Mã Bài </div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>9.000 điểm tài phú</li>
-                  <li>Tốc độ di chuyển 110%</li>
-                  <li>Kháng tất cả +115 điểm</li>
-                  <li>Né tránh +115 điểm</li>
-                  <li>Sinh lực tối đa +1000 điểm</li>
-                  <li>Thể lực tối đa +120 điểm</li>
-                  <li>Di hình hoán ảnh +1 cấp</li>
-                  <li>Phát huy lực tấn công cơ bản +24%</li>
-                  <li>Chịu sát thương chí mạng -22%</li>
-                  <li>Hiệu suất phục hồi sinh lực +15%</li>
-                  <li>Kỹ năng đồng hành +2</li>
-                  <li>Kỹ năng bí kíp +2</li>
-                  <li>Kỹ năng phái +1</li>
-                </ul>
-              </div>
-            </div>
-            <div className="reward-blocks ">
-              <div className="milestones-active text-center">
-                <span>
-                  {" "}
-                  100000 vạn đồng
-                  <br />
-                  (125 ngày sau Open)
-                </span>
-              </div>
-              <div className="rewardss">
-                <div className="items badges">Mở khoá ngựa mốc 90.000</div>
-                <div className="items badges">50 HTB khóa</div>
-                <div className="items badges">5000 tiền du long (khóa)</div>
-                <div className="items currencys">700 vạn đồng khoá</div>
-                <div className="items currencys">1000 vạn bạc khoá</div>
-                <div className="items currencys">10.000 NHHT (khoá)</div>
-                <div className="items currencys">10 lần chuyển cường hóa</div>
-                <div className="items highlights">Mã Bài </div>
-                <ul className="text-red-600 list-disc pl-10">
-                  <li>10.000 điểm tài phú</li>
-                  <li>Tốc độ di chuyển 110%</li>
-                  <li>Kháng tất cả +130 điểm</li>
-                  <li>Né tránh +130 điểm</li>
-                  <li>Sinh lực tối đa +1000 điểm</li>
-                  <li>Thể lực tối đa +120 điểm</li>
-                  <li>Di hình hoán ảnh +1 cấp</li>
-                  <li>Phát huy lực tấn công cơ bản +28%</li>
-                  <li>Chịu sát thương chí mạng -26%</li>
-                  <li>Hiệu suất phục hồi sinh lực +20%</li>
-                  <li>Kỹ năng đồng hành +2</li>
-                  <li>Kỹ năng bí kíp +2</li>
-                  <li>Kỹ năng phái +2</li>
-                </ul>
-              </div>
+
+            <div className="text-center mt-12">
+              <p className="inline-block bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-transparent text-lg font-bold">
+                Hãy nạp thẻ ngay để nhận những phần thưởng giá trị! 🎮
+              </p>
             </div>
           </div>
         </article>
@@ -685,3 +132,482 @@ export default function PhucLoiNapThePage() {
     </div>
   );
 }
+
+// Định nghĩa dữ liệu phần thưởng
+const rewardTiers = [
+  {
+    milestone: "1000",
+    rewards: [
+      {
+        type: "special",
+        text: "Đặc quyền tu luyện mật tịch nhanh (10 vạn đồng/lượt)",
+      },
+      { type: "currency", text: "20 vạn đồng khoá" },
+      { type: "currency", text: "70 vạn bạc khoá" },
+      { type: "currency", text: "1 lệnh bài mở rộng rương (2)" },
+      { type: "currency", text: "1 lệnh bài mở rộng rương (3)" },
+      { type: "currency", text: "1 lệnh bài mở rộng rương (4)" },
+    ],
+    stats: ["15 điểm tài phú", "Chí Mạng +10"],
+    active: false,
+  },
+  {
+    milestone: "2000",
+    rewards: [
+      { type: "special", text: "Danh Hiệu Thành Viên Thân Thiết + Vòng Sáng" },
+      { type: "special", text: "1 Lệnh Bài Uy Danh Giang Hồ" },
+      { type: "currency", text: "3 Túi 24 ô" },
+      { type: "currency", text: "30 vạn đồng khoá" },
+      { type: "currency", text: "90 vạn bạc khoá" },
+    ],
+    stats: [
+      "100 điểm tài phú",
+      "Tốc độ di chuyển +90%",
+      "Kháng tất cả +5",
+      "Né tránh +5",
+      "Thể lực tối đa +90 điểm",
+      "Sinh lực tối đa +800 điểm",
+    ],
+    active: false,
+  },
+  {
+    milestone: "4000",
+    rewards: [
+      { type: "special", text: "1000 tiền du long (khóa)" },
+      { type: "currency", text: "40 vạn đồng khoá" },
+      { type: "currency", text: "100 vạn bạc khoá" },
+      { type: "currency", text: "2000 NHHT (khoá)" },
+      { type: "currency", text: "3 lần chuyển cường hóa" },
+      { type: "special", text: "Mặt Nạ Hàng Long Phục Hổ – Thường" },
+    ],
+    stats: [
+      "1000 điểm tài phú",
+      "Phát huy lực tấn công cơ bản +2%",
+      "Phát huy lực tấn công kỹ năng +2%",
+      "Chí mạng +15",
+    ],
+    active: false,
+  },
+  {
+    milestone: "6000",
+    rewards: [
+      { type: "special", text: "Danh Hiệu Nhà Tài Trợ Đồng + Vòng Sáng" },
+      { type: "special", text: "Mở khóa thú cưới mốc nạp 2000 vạn" },
+      { type: "currency", text: "50 vạn đồng khoá" },
+      { type: "currency", text: "110 vạn bạc khoá" },
+      { type: "currency", text: "3000 NHHT (khoá)" },
+      { type: "currency", text: "3 lần chuyển cường hóa" },
+      { type: "special", text: "Mã Bài Tuyệt Thế Tuyết Vũ" },
+    ],
+    stats: [
+      "300 điểm tài phú",
+      "Tốc độ di chuyển +95%",
+      "Kháng tất cả +10",
+      "Né tránh +10",
+      "Sinh lực tối đa +800 điểm",
+      "Thể lực tối đa +90 điểm",
+      "Phát huy lực tấn công cơ bản +2%",
+      "Chịu sát thương chí mạng –2%",
+    ],
+    active: false,
+  },
+  {
+    milestone: "10000",
+    rewards: [
+      { type: "special", text: "Đặc quyền nhận mật tịch trung miễn phí" },
+      { type: "special", text: "Mở khóa mặt nạ mốc 4000" },
+      { type: "currency", text: "1000 tiền du long (khóa)" },
+      { type: "currency", text: "80 vạn đồng khoá" },
+      { type: "currency", text: "150 vạn bạc khoá" },
+      { type: "currency", text: "4000 NHHT (khoá)" },
+      { type: "currency", text: "3 lần chuyển cường hóa" },
+      { type: "special", text: "Mặt Nạ Hàng Long Phục Hổ – Quý" },
+    ],
+    stats: [
+      "3000 điểm tài phú",
+      "Phát huy lực tấn công cơ bản +5%",
+      "Phát huy lực tấn công kỹ năng +5%",
+      "Tấn công khi đánh chí mạng +5%",
+      "Chí mạng +25",
+    ],
+    active: false,
+  },
+  {
+    milestone: "14000",
+    rewards: [
+      { type: "special", text: "Danh Hiệu Nhà Tài Trợ Bạc + Vòng Sáng" },
+      { type: "special", text: "Đặc quyền nhận mật tịch cao miễn phí" },
+      { type: "special", text: "Mở khóa thú cưỡi mốc 6000 vạn" },
+      { type: "currency", text: "1000 tiền du long (khóa)" },
+      { type: "currency", text: "100 vạn đồng khoá" },
+      { type: "currency", text: "150 vạn bạc khoá" },
+      { type: "currency", text: "5000 NHHT (khoá)" },
+      { type: "currency", text: "3 lần chuyển cường hóa" },
+      { type: "special", text: "Mã Bài Trục Nhật" },
+    ],
+    stats: [
+      "1000 điểm tài phú",
+      "Tốc độ di chuyển +100%",
+      "Kháng tất cả +20",
+      "Né tránh +20",
+      "Sinh lực tối đa +800 điểm",
+      "Thể lực tối đa +120 điểm",
+      "Kỹ năng di hình hoán ảnh +1",
+      "Phát huy lực tấn công cơ bản +5%",
+      "Chịu sát thương chí mạng -3%",
+    ],
+    active: false,
+  },
+  {
+    milestone: "18000",
+    rewards: [
+      { type: "special", text: "Mở khóa mặt nạ mốc 10.000 vạn" },
+      { type: "currency", text: "2000 tiền du long (khóa)" },
+      { type: "currency", text: "150 vạn đồng khoá" },
+      { type: "currency", text: "170 vạn bạc khoá" },
+      { type: "currency", text: "6000 NHHT (khoá)" },
+      { type: "currency", text: "3 lần chuyển cường hóa" },
+      { type: "special", text: "Mặt Nạ Hàng Long Phục Hổ – Hiếm" },
+    ],
+    stats: [
+      "5000 điểm tài phú",
+      "Phát huy lực tấn công cơ bản +8%",
+      "Phát huy lực tấn công kỹ năng +8%",
+      "Tấn công khi đánh chí mạng +8%",
+      "Thiên hạ vô song +1",
+      "Chí mạng +40",
+      "Kỹ năng phái +1 cấp",
+    ],
+    active: false,
+  },
+  {
+    milestone: "23000",
+    rewards: [
+      { type: "special", text: "Danh Hiệu Nhà Tài Trợ Vàng + Vòng Sáng" },
+      { type: "special", text: "Đặc quyền nhận phi phong miễn phí" },
+      { type: "special", text: "Mở khóa thú cưỡi mốc nạp 14.000 vạn" },
+      { type: "currency", text: "2000 tiền du long (khóa)" },
+      { type: "currency", text: "170 vạn đồng khoá" },
+      { type: "currency", text: "200 vạn bạc khoá" },
+      { type: "currency", text: "7000 NHHT (khoá)" },
+      { type: "currency", text: "3 lần chuyển cường hóa" },
+      { type: "special", text: "Mã Bài Phiên Vũ" },
+    ],
+    stats: [
+      "3320 điểm tài phú",
+      "Tốc độ di chuyển +100%",
+      "Kháng tất cả + 30",
+      "Né tránh + 30",
+      "Thể lực tối đa +120 điểm",
+      "Sinh lực tối đa +800 điểm",
+      "Di hình hoán ảnh cấp +1",
+      "Phát huy lực tấn công cơ bản +8%",
+      "Chịu sát thương chí mạng -6%",
+    ],
+    active: false,
+  },
+  {
+    milestone: "28000",
+    rewards: [
+      { type: "special", text: "Danh Hiệu Nhà Tài Trợ Bạch Kim + Vòng Sáng" },
+      { type: "special", text: "Mở khóa mặt nạ mốc 19.000 vạn" },
+      { type: "currency", text: "2000 tiền du long (khóa)" },
+      { type: "currency", text: "200 vạn đồng khoá" },
+      { type: "currency", text: "250 vạn bạc khoá" },
+      { type: "currency", text: "8000 NHHT (khoá)" },
+      { type: "currency", text: "3 lần chuyển cường hóa" },
+      { type: "special", text: "Mặt Nạ Hàng Long Phục Hổ – tuyệt" },
+    ],
+    stats: [
+      "6000 điểm tài phú",
+      "Phát huy lực tấn công cơ bản +11%",
+      "Phát huy lực tấn công kỹ năng +11%",
+      "Tấn công khi đánh chí mạng +11%",
+      "Thiên hạ vô song +1",
+      "Chí mạng +60",
+      "Kỹ năng phái +1",
+      "Phát huy lực tấn công cơ bản +8%",
+      "Kỹ năng bí kíp +1",
+    ],
+    active: false,
+  },
+  {
+    milestone: "34000",
+    rewards: [
+      { type: "special", text: "Mở khóa thú cưỡi mốc 23.000 vạn" },
+      { type: "currency", text: "2000 tiền du long (khóa)" },
+      { type: "currency", text: "230 vạn đồng khoá" },
+      { type: "currency", text: "250 vạn bạc khoá" },
+      { type: "currency", text: "9000 NHHT (khoá)" },
+      { type: "currency", text: "3 lần chuyển cường hóa" },
+      { type: "special", text: "Mã Bài Ức Vân" },
+    ],
+    stats: [
+      "5000 điểm tài phú",
+      "Tốc độ di chuyển +110%",
+      "Kháng tất cả +45",
+      "Né tránh + 45",
+      "Thể lực tối đa +120 điểm",
+      "Sinh lực tối đa +800 điểm",
+      "Di hình hoán ảnh cấp + 1",
+      "Phát huy lực tấn công cơ bản +11%",
+      "Chịu sát thương chí mạng -9%",
+      "Hiệu Suất Phục hồi sinh lực +3%",
+      "Kỹ năng đồng hành + 1",
+    ],
+    active: false,
+  },
+  {
+    milestone: "40000",
+    rewards: [
+      { type: "special", text: "Danh Hiệu Nhà Tài Trợ Kim Cương + Vòng Sáng" },
+      { type: "special", text: "Mở khóa mặt nạ mốc nạp 28.000 vạn" },
+      { type: "currency", text: "2000 tiền du long (khóa)" },
+      { type: "currency", text: "250 vạn đông khoá" },
+      { type: "currency", text: "300 vạn bạc khoá" },
+      { type: "currency", text: "10.000 NHHT (khoá)" },
+      { type: "currency", text: "3 lần chuyển cường hóa" },
+      { type: "special", text: "Mặt Hàng Long Phục Hổ – Cực" },
+    ],
+    stats: [
+      "7000 điểm tài phú",
+      "Phát huy lực tấn công cơ bản +14%",
+      "Phát huy lực tấn công kỹ năng +14%",
+      "Tấn công khi đánh chí mạng +14%",
+      "Chí mạng +80",
+      "Thiên hạ vô song +1",
+      "Kỹ năng phái +1",
+      "Kỹ năng đồng hành +1",
+      "Kỹ năng bí kíp +1",
+    ],
+    active: false,
+  },
+  {
+    milestone: "46000",
+    rewards: [
+      { type: "special", text: "Mở khoá ngựa mốc nạp 34.000 vạn" },
+      { type: "currency", text: "2000 tiền du long (khóa)" },
+      { type: "currency", text: "300 vạn đông khoá" },
+      { type: "currency", text: "500 vạn bạc khoá" },
+      { type: "currency", text: "10.000 NHHT (khoá)" },
+      { type: "currency", text: "3 lần chuyển cường hóa" },
+      { type: "special", text: "Mã Bài" },
+    ],
+    stats: [
+      "6000 điểm tài phú",
+      "Tốc độ di chuyển + 110%",
+      "Kháng tất cả +60",
+      "Né tránh + 60",
+      "Thể lực tối đa +120 điểm",
+      "Sinh lực tối đa +800 điểm",
+      "Di hình hoán ảnh cấp +1",
+      "Phát huy lực tấn công cơ bản +14%",
+      "Chịu sát thương chí mạng -12%",
+      "Hiệu suất phục hồi sinh lực +5%",
+      "Kỹ năng đồng hành +1",
+      "Kỹ năng bí kiếp +1",
+    ],
+    active: false,
+  },
+  {
+    milestone: "52000",
+    rewards: [
+      {
+        type: "special",
+        text: "Danh Hiệu Nhà Tài Trợ Kim Cương 2 + Vòng Sáng",
+      },
+      { type: "special", text: "Mở khoá mặt nạ mốc 40.000 vạn" },
+      { type: "currency", text: "2500 tiền du long (khóa)" },
+      { type: "currency", text: "400 vạn đồng khoá" },
+      { type: "currency", text: "600 vạn bạc khoá" },
+      { type: "currency", text: "10.000 NHHT (khoá)" },
+      { type: "currency", text: "3 lần chuyển cường hóa" },
+      { type: "special", text: "Mặt Nạ Hàng Long Phục Hổ – Siêu Phẩm" },
+    ],
+    stats: [
+      "8000 điểm tài phú",
+      "Phát huy lực tấn công cơ bản +17%",
+      "Phát huy lực tấn công kỹ năng +17%",
+      "Tấn công khi đánh chí mạng +17%",
+      "Chí mạng +100",
+      "Thiên hạ vô song +1",
+      "Kỹ năng phái +2",
+      "Kỹ năng đồng hành +1",
+      "Kỹ năng bí kíp + 1",
+    ],
+    active: false,
+  },
+  {
+    milestone: "58000",
+    rewards: [
+      { type: "special", text: "Mở khoá ngựa mốc 46.000 vạn" },
+      { type: "currency", text: "2500 tiền du long (khóa)" },
+      { type: "currency", text: "400 vạn đồng khoá" },
+      { type: "currency", text: "600 vạn bạc khoá" },
+      { type: "currency", text: "10.000 NHHT (khoá)" },
+      { type: "currency", text: "3 lần chuyển cường hóa" },
+      { type: "special", text: "Mã Bài" },
+    ],
+    stats: [
+      "7000 điểm tài phú",
+      "Tốc độ di chuyển +110%",
+      "Kháng tất cả +75 điểm",
+      "Né tránh +75 điểm",
+      "Sinh lực tối đa +800 điểm",
+      "Thể lực tối đa +120 điểm",
+      "Di hình hoán ảnh +1 cấp",
+      "Phát huy lực tấn công cơ bản +17%",
+      "Chịu sát thương chí mạng -15%",
+      "Hiệu suất phục hồi sinh lực +5%",
+      "Kỹ năng đồng hành +1",
+      "Kỹ năng bí kíp +1",
+      "Kỹ năng phái +1",
+    ],
+    active: false,
+  },
+  {
+    milestone: "64000",
+    rewards: [
+      {
+        type: "special",
+        text: "Danh Hiệu Nhà Tài Trợ Kim Cương 3 + vòng sáng",
+      },
+      { type: "special", text: "Mở khoá mặt nạ mốc 52.000 vạn" },
+      { type: "currency", text: "3000 tiền du long (khóa)" },
+      { type: "currency", text: "600 vạn đồng khoá" },
+      { type: "currency", text: "800 vạn bạc khoá" },
+      { type: "currency", text: "10.000 NHHT (khoá)" },
+      { type: "currency", text: "3 lần chuyển cường hóa" },
+      { type: "special", text: "Mặt Nạ Hàng Long Phục Hổ – Cực Phẩm" },
+    ],
+    stats: [
+      "9000 điểm tài phú",
+      "Phát huy lực tấn công cơ bản +20%",
+      "Phát huy lực tấn công kỹ năng +20%",
+      "Tấn công khi đánh chí mạng +20%",
+      "Chí mạng +120",
+      "Thiên hạ vô song +1",
+      "Kỹ năng phái +2",
+      "Kỹ năng đồng hành +1",
+      "Kỹ năng bí kíp + 2",
+    ],
+    active: false,
+  },
+  {
+    milestone: "72000",
+    rewards: [
+      {
+        type: "special",
+        text: "Danh Hiệu Nhà Trài Trợ Kim Cương 4 + Vòng Sáng",
+      },
+      { type: "special", text: "Mở khoá ngựa mốc nạp 58.000 vạn" },
+      { type: "currency", text: "4000 tiền du long (khóa)" },
+      { type: "currency", text: "700 vạn đồng khoá" },
+      { type: "currency", text: "800 vạn bạc khoá" },
+      { type: "currency", text: "10.000 NHHT (khoá)" },
+      { type: "currency", text: "5 lần chuyển cường hóa" },
+      { type: "special", text: "Mã Bài" },
+    ],
+    stats: [
+      "8000 điểm tài phú",
+      "Tốc độ di chuyển 110%",
+      "Kháng Tất cả +95 điểm",
+      "Né tránh + 95 điểm",
+      "Sinh lực tối đa +800 điểm",
+      "Thể lực tối đa + 120 điểm",
+      "Di hình hoán ảnh + 1 cấp",
+      "Phát huy lực tấn công cơ bản +20%",
+      "Chịu sát thương chí mạng -18%",
+      "Hiệu suất phục hồi sinh lực +10%",
+      "Kỹ năng đồng hành +2",
+      "Kỹ năng bí kíp +1",
+      "Kỹ năng phái +1",
+    ],
+    active: false,
+  },
+  {
+    milestone: "80000",
+    rewards: [
+      { type: "special", text: "Danh Hiệu Tuyệt ĐỈnh Đại Phú Hào + Vòng Sáng" },
+      { type: "special", text: "Mở khoá mật nạ mốc 64.000 vạn" },
+      { type: "currency", text: "20 HTB khóa" },
+      { type: "currency", text: "4000 tiền du long (khóa)" },
+      { type: "currency", text: "700 vạn đồng khoá" },
+      { type: "currency", text: "1000 vạn bạc khoá" },
+      { type: "currency", text: "10.000 NHHT (khoá)" },
+      { type: "currency", text: "5 lần chuyển cường hóa" },
+      { type: "special", text: "Mặt Nạ Thiên Hạ Chí Tôn" },
+    ],
+    stats: [
+      "10.000 điểm tài phú",
+      "Phát huy lực tấn công cơ bản +24%",
+      "Phát huy lực tấn công cơ bản +24%",
+      "Tấn công khi đánh chí mạng +24%",
+      "Chí mạng +150",
+      "Thiên hạ vô song +1",
+      "Kỹ năng phái +2",
+      "Kỹ năng đồng hành +2",
+      "Kỹ năng bí kíp +2",
+    ],
+    active: false,
+  },
+  {
+    milestone: "90000",
+    rewards: [
+      { type: "special", text: "Danh Hiệu CỬu Ngũ Chí Tôn + Vòng Sáng" },
+      { type: "special", text: "Mở khoá ngựa mốc 72.000 vạn" },
+      { type: "currency", text: "30 HTB khóa" },
+      { type: "currency", text: "5000 tiền du long (khóa)" },
+      { type: "currency", text: "700 vạn đồng khoá" },
+      { type: "currency", text: "1000 vạn bạc khoá" },
+      { type: "currency", text: "10.000 NHHT (khoá)" },
+      { type: "currency", text: "10 lần chuyển cường hóa" },
+      { type: "special", text: "Mã Bài " },
+    ],
+    stats: [
+      "9.000 điểm tài phú",
+      "Tốc độ di chuyển 110%",
+      "Kháng tất cả +115 điểm",
+      "Né tránh +115 điểm",
+      "Sinh lực tối đa +1000 điểm",
+      "Thể lực tối đa +120 điểm",
+      "Di hình hoán ảnh +1 cấp",
+      "Phát huy lực tấn công cơ bản +24%",
+      "Chịu sát thương chí mạng -22%",
+      "Hiệu suất phục hồi sinh lực +15%",
+      "Kỹ năng đồng hành +2",
+      "Kỹ năng bí kíp +2",
+      "Kỹ năng phái +1",
+    ],
+    active: false,
+  },
+  {
+    milestone: "100000",
+    rewards: [
+      { type: "special", text: "Mở khoá ngựa mốc 90.000" },
+      { type: "currency", text: "50 HTB khóa" },
+      { type: "currency", text: "5000 tiền du long (khóa)" },
+      { type: "currency", text: "700 vạn đồng khoá" },
+      { type: "currency", text: "1000 vạn bạc khoá" },
+      { type: "currency", text: "10.000 NHHT (khoá)" },
+      { type: "currency", text: "10 lần chuyển cường hóa" },
+      { type: "special", text: "Mã Bài " },
+    ],
+    stats: [
+      "10.000 điểm tài phú",
+      "Tốc độ di chuyển 110%",
+      "Kháng tất cả +130 điểm",
+      "Né tránh +130 điểm",
+      "Sinh lực tối đa +1000 điểm",
+      "Thể lực tối đa +120 điểm",
+      "Di hình hoán ảnh +1 cấp",
+      "Phát huy lực tấn công cơ bản +28%",
+      "Chịu sát thương chí mạng -26%",
+      "Hiệu suất phục hồi sinh lực +20%",
+      "Kỹ năng đồng hành +2",
+      "Kỹ năng bí kíp +2",
+      "Kỹ năng phái +2",
+    ],
+    active: false,
+  },
+];
