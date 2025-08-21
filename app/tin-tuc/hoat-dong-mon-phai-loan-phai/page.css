@@ -1,0 +1,58 @@
+.event-containers {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.reward-blocks {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+.milestones-active {
+  background: linear-gradient(135deg, #b22222, #ff6347);
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-size: 18px;
+}
+
+.milestones-noneactive {
+  background: linear-gradient(135deg, blue, #ff6347);
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-size: 18px;
+}
+
+.rewardss {
+  padding: 20px;
+  background: #fff;
+}
+.rewards ul {
+  margin: 5px 0 15px 25px;
+}
+.items {
+  margin: 6px 0;
+  font-size: 15px;
+}
+.highlights {
+  color: #1e90ff;
+  font-weight: bold;
+}
+.currencys {
+  color: #e67e22;
+  font-weight: bold;
+}
+.badges {
+  color: #8e44ad;
+  font-weight: bold;
+}

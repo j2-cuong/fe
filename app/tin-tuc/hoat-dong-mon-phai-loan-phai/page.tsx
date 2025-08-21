@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Tham gia hoạt động Bạch hổ đường với nhiều phần thưởng hấp dẫn và thử thách thú vị",
 };
 
-export default function PhucLoiNapThePage() {
+export default function LoanPhaiPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50">
       <GameNavigation />
