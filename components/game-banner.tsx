@@ -51,6 +51,14 @@ export function GameBanner() {
                   <button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-lg text-base font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 border border-blue-500 w-full">
                     📝 ĐĂNG KÝ
                   </button>
+                  <button
+                    onClick={() => {
+                      router.push("/tin-tuc");
+                    }}
+                    className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-lg text-base font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 border border-blue-500 w-full"
+                  >
+                    📝 Tin tức
+                  </button>
                 </div>
                 <div className="flex items-center justify-center space-y-1 text-xs text-yellow-400 gap-3">
                   <span className="animate-fade-in">✓ Miễn phí</span>

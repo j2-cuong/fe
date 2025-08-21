@@ -65,7 +65,8 @@ export default function TongKimPage() {
             <div className="bg-cyan-200 p-4 rounded-lg mb-6">
               <p className=" font-medium text-red-500">⚠️ Lưu ý quan trọng:</p>
               <p className="text-red-500">
-                Bên thắng được thưởng 1.200, bên thua được thưởng 600 (điểm tích lũy nhận thưởng)
+                Bên thắng được thưởng 1.200, bên thua được thưởng 600 (điểm tích
+                lũy nhận thưởng)
               </p>
             </div>
 
@@ -79,7 +80,7 @@ export default function TongKimPage() {
             </ul> */}
 
             <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">
-              Phần thưởng 
+              Phần thưởng
             </h2>
             <div className="reward-blocks">
               <div className="milestones-noneactive">1.500 - 2.400 điểm</div>
@@ -102,8 +103,12 @@ export default function TongKimPage() {
                 <div className="items highlights">5 tiền du long</div>
                 <div className="items highlights">5 vạn đồng</div>
                 <div className="items highlights">Mốc nạp 10 vạn Đồng</div>
-                <div className="items highlights">1 mảnh huy chương ( không khóa )</div>
-                <div className="items highlights">1 mảnh ghép Uẩn Linh ( khóa )</div>
+                <div className="items highlights">
+                  1 mảnh huy chương ( không khóa )
+                </div>
+                <div className="items highlights">
+                  1 mảnh ghép Uẩn Linh ( khóa )
+                </div>
               </div>
             </div>
 
@@ -118,8 +123,12 @@ export default function TongKimPage() {
                 <div className="items highlights">7 tiền du long</div>
                 <div className="items highlights">7 vạn đồng</div>
                 <div className="items highlights">Mốc nạp 20 vạn Đồng</div>
-                <div className="items highlights">3 mảnh huy chương ( không khóa )</div>
-                <div className="items highlights">3 mảnh ghép Uẩn Linh ( không khóa )</div>
+                <div className="items highlights">
+                  3 mảnh huy chương ( không khóa )
+                </div>
+                <div className="items highlights">
+                  3 mảnh ghép Uẩn Linh ( không khóa )
+                </div>
                 <div className="items highlights">60 công trạng</div>
               </div>
             </div>
@@ -135,8 +144,12 @@ export default function TongKimPage() {
                 <div className="items highlights">10 tiền du long</div>
                 <div className="items highlights">10 vạn đồng</div>
                 <div className="items highlights">Mốc nạp 30 vạn Đồng</div>
-                <div className="items highlights">5 mảnh huy chương ( không khóa )</div>
-                <div className="items highlights">5 mảnh ghép Uẩn Linh ( không khóa )</div>
+                <div className="items highlights">
+                  5 mảnh huy chương ( không khóa )
+                </div>
+                <div className="items highlights">
+                  5 mảnh ghép Uẩn Linh ( không khóa )
+                </div>
                 <div className="items highlights">90 công trạng</div>
               </div>
             </div>
@@ -152,8 +165,12 @@ export default function TongKimPage() {
                 <div className="items highlights">15 tiền du long</div>
                 <div className="items highlights">15 vạn đồng</div>
                 <div className="items highlights">Mốc nạp 50 vạn Đồng</div>
-                <div className="items highlights">7 mảnh huy chương ( không khóa )</div>
-                <div className="items highlights">7 mảnh ghép Uẩn Linh ( không khóa )</div>
+                <div className="items highlights">
+                  7 mảnh huy chương ( không khóa )
+                </div>
+                <div className="items highlights">
+                  7 mảnh ghép Uẩn Linh ( không khóa )
+                </div>
                 <div className="items highlights">150 công trạng</div>
               </div>
             </div>
@@ -169,8 +186,12 @@ export default function TongKimPage() {
                 <div className="items highlights">30 tiền du long</div>
                 <div className="items highlights">20 vạn đồng</div>
                 <div className="items highlights">Mốc nạp 70 vạn Đồng</div>
-                <div className="items highlights">9 mảnh huy chương ( không khóa )</div>
-                <div className="items highlights">9 mảnh ghép Uẩn Linh ( không khóa )</div>
+                <div className="items highlights">
+                  9 mảnh huy chương ( không khóa )
+                </div>
+                <div className="items highlights">
+                  9 mảnh ghép Uẩn Linh ( không khóa )
+                </div>
                 <div className="items highlights">210 công trạng</div>
               </div>
             </div>
@@ -186,8 +207,12 @@ export default function TongKimPage() {
                 <div className="items highlights">50 tiền du long</div>
                 <div className="items highlights">30 vạn đồng</div>
                 <div className="items highlights">Mốc nạp 100 vạn Đồng</div>
-                <div className="items highlights">12 mảnh huy chương ( không khóa )</div>
-                <div className="items highlights">12 mảnh ghép Uẩn Linh ( không khóa )</div>
+                <div className="items highlights">
+                  12 mảnh huy chương ( không khóa )
+                </div>
+                <div className="items highlights">
+                  12 mảnh ghép Uẩn Linh ( không khóa )
+                </div>
                 <div className="items highlights">300 công trạng</div>
               </div>
             </div>
@@ -208,9 +233,7 @@ export default function TongKimPage() {
 
             <div className="  p-4 rounded-lg mb-6 text-blue-700">
               <p className=" ont-medium">✨ Thông tin đặc biệt:</p>
-              <p className="">
-                Phần thưởng sẽ được nhân đôi vào trận 21h!
-              </p>
+              <p className="">Phần thưởng sẽ được nhân đôi vào trận 21h!</p>
             </div>
 
             <p className="text-center mt-8 font-bold text-blue-700">

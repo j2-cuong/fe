@@ -100,7 +100,9 @@ export default function QuaOpenPage() {
             </div>
 
             <div className="reward-blocks">
-              <div className="milestones-noneactive">Code Like Share Cmt bài viết</div>
+              <div className="milestones-noneactive">
+                Code Like Share Cmt bài viết
+              </div>
               <div className="rewardss">
                 <div className="items badges">Mốc nạp 200k</div>
                 <div className="items highlights">2 huyền tinh 7</div>

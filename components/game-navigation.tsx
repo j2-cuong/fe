@@ -37,14 +37,14 @@ export function GameNavigation() {
             aria-label="Về trang chủ Thiên Tử Kiếm"
           >
             <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg flex items-center justify-center">
-              <img
-                src="website_logo.png"
+              {/* <img
+                src="/website_logo.png"
                 alt="Thiên Tử Kiếm - Kiếm Thế PC 2009"
                 className="w-full h-full object-cover object-center !bg-transparent"
-              />
+              /> */}
             </div>
             <span className="font-serif font-bold text-lg sm:text-xl text-gray-800 group-hover:text-emerald-600 transition-colors">
-              Thiên Tử Kiếm
+              Cường NH
             </span>
           </Link>
 

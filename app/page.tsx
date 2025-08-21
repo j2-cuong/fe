@@ -35,7 +35,7 @@ export default function HomePage() {
           {/* Full-screen banner section */}
           <GameBanner />
           {/* Scrollable content section */}
-          <GameHomepage />
+          {/* <GameHomepage /> */}
         </main>
       </div>
     </>

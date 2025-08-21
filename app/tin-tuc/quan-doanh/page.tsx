@@ -3,14 +3,15 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { GameNavigation } from "@/components/game-navigation";
+import "./page.css";
 
 export const metadata: Metadata = {
-  title: "Hoạt động Bạch hổ đường - Thiên Tử Kiếm",
-  description:
-    "Tham gia hoạt động Bạch hổ đường với nhiều phần thưởng hấp dẫn và thử thách thú vị",
+  title: "Hoạt động Quân Doanh - Thiên Tử Kiếm",
+  // description:
+  //   "Tham gia cuộc chiến Tống kim khốc liệt với những trận đấu PvP hấp dẫn",
 };
 
-export default function BachHoDuongPage() {
+export default function QuanDoanhPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50">
       <GameNavigation />
@@ -25,7 +26,7 @@ export default function BachHoDuongPage() {
         <article className="rounded-2xl p-8 shadow-lg bg-white">
           <header className="mb-8">
             <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
-              Hoạt động Bạch hổ đường
+              Hoạt động Quân Doanh
             </h1>
 
             <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-6">
@@ -47,94 +48,55 @@ export default function BachHoDuongPage() {
           </header>
 
           <div className="prose prose-lg max-w-none">
-            <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">
-              Thời gian diễn ra
-            </h2>
-            <div className="bg-blue-50 p-4 rounded-lg mb-6">
-              <ul className="space-y-2 text-blue-700">
-                <li>• Đợt 1: 00:00 - 07:00 sáng</li>
-                <li>• Đợt 2: 09:00 - 18:00 chiều</li>
-                <li>• Đợt 3: 22:00 - 23:00 tối</li>
-              </ul>
-            </div>
-
             <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-lg mb-6">
               <h3 className="font-bold text-yellow-800 flex items-center gap-2 mb-2">
                 <span className="text-xl">⚠️</span> Lưu ý quan trọng:
               </h3>
-              <p className="text-yellow-700">
-                Ngày đầu tiên mở máy chủ sẽ không mở Bạch Hổ Đường lúc 11:00
-              </p>
-            </div>
-
-            <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">
-              Điều kiện tham gia
-            </h2>
-            <div className="bg-emerald-50 p-4 rounded-lg mb-6">
-              <ul className="space-y-2 text-emerald-700">
-                <li>• Yêu cầu cấp độ: 25 trở lên</li>
-                <li>• Số lần tham gia: 1 lần/ngày</li>
-                <li>• Hình thức: Bang Hội/Gia Tộc/Tự do</li>
+              <ul className="space-y-2 text-yellow-700">
+                <li>• Mỗi ngày tham gia 1 lần</li>
+                <li>• Hoàn thành nhiệm vụ chính tuyến được 6 điểm uy danh</li>
+                <li>• Khuyến khích tham gia bách man sơn</li>
               </ul>
             </div>
 
-            <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">
-              Phần thưởng mỗi tầng
-            </h2>
             <div className="bg-gradient-to-br from-emerald-50 to-blue-50 p-6 rounded-xl border border-emerald-100 shadow-sm">
+              <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <span className="text-emerald-500">🎁</span>
+                Phần thưởng khi hoàn thành phó bản
+              </h2>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <li className="flex items-center gap-2 text-gray-700">
                   <span className="text-emerald-500">•</span>
-                  1,000,000 điểm Kinh nghiệm
-                </li>
-                <li className="flex items-center gap-2 text-gray-700">
-                  <span className="text-emerald-500">•</span>1 Huyền tinh 5
-                  (khóa)
-                </li>
-                <li className="flex items-center gap-2 text-gray-700">
-                  <span className="text-emerald-500">•</span>5 vạn Đồng khóa
+                  5.000.000 kinh nghiệm
                 </li>
                 <li className="flex items-center gap-2 text-gray-700">
                   <span className="text-emerald-500">•</span>
-                  10 vạn Bạc khóa
+                  15 vạn Đồng khóa
                 </li>
                 <li className="flex items-center gap-2 text-gray-700">
                   <span className="text-emerald-500">•</span>
-                  Mốc nạp 5 vạn
+                  50 vạn Bạc khóa
                 </li>
                 <li className="flex items-center gap-2 text-gray-700">
-                  <span className="text-emerald-500">•</span>2 uy danh
-                </li>
-                <li className="flex items-center gap-2 text-gray-700">
-                  <span className="text-emerald-500">•</span>1 mảnh huy chương
-                  khóa
-                </li>
-                <li className="flex items-center gap-2 text-gray-700">
-                  <span className="text-emerald-500">•</span>1 mảnh ghép Uẩn
-                  Linh khóa
+                  <span className="text-emerald-500">•</span>5 Huyền tinh 6
                 </li>
                 <li className="flex items-center gap-2 text-gray-700">
                   <span className="text-emerald-500">•</span>
-                  50 điểm công trạng
+                  Mốc nạp 50 vạn
+                </li>
+                <li className="flex items-center gap-2 text-gray-700">
+                  <span className="text-emerald-500">•</span>
+                  100 điểm công trạng
                 </li>
               </ul>
             </div>
 
-            <div className="bg-blue-50 p-4 rounded-lg mt-6 mb-6">
-              <h3 className="font-bold text-blue-700 flex items-center gap-2 mb-2">
-                <span className="text-xl">✨</span> Thông tin đặc biệt:
-              </h3>
-              <p className="text-blue-700">
-                Phần thưởng sẽ được nhân đôi vào các trận 15h và 22h!
-              </p>
-            </div>
-
-            <p className="text-center mt-8">
-              <span className="inline-block bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-transparent text-lg font-bold">
+            <div className="text-center mt-12">
+              <p className="inline-block bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-transparent text-lg font-bold">
                 Hãy tham gia ngay để không bỏ lỡ cơ hội nhận những phần thưởng
                 giá trị! 🎮
-              </span>
-            </p>
+              </p>
+            </div>
           </div>
         </article>
       </div>
