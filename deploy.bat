@@ -1,5 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
+chcp 65001 >nul
 
 :: ====================================================================
 :: === Cấu hình và Logging
@@ -8,24 +9,7 @@ setlocal enabledelayedexpansion
 set "LOGFILE=deploy.log"
 set "NODE_ENV=production"
 
-:: Hàm để ghi log
-:log_message
-echo [%time%] %~1
-echo [%time%] %~1 >> "%LOGFILE%"
-goto :eof
-
-:: Hàm để kiểm tra quyền admin
-:check_admin
-net session >nul 2>&1
-if %errorlevel% neq 0 (
-    call :log_message "Cảnh báo: Script không chạy với quyền Admin. Một số lệnh có thể thất bại."
-    call :log_message "Ví dụ: 'pm2 startup' cần quyền Admin để tự động khởi động cùng Windows."
-    set "HAS_ADMIN=false"
-) else (
-    set "HAS_ADMIN=true"
-)
-goto :eof
-
+:: Bắt đầu quá trình chính
 call :log_message "Bắt đầu quá trình triển khai Next.js..."
 call :log_message "Ghi log vào %LOGFILE%"
 
@@ -146,7 +130,7 @@ call :log_message "Hoàn thành việc dọn dẹp."
 
 :: Cài đặt lại các package
 call :log_message "Cài đặt lại các package..."
-npm install
+yarn install
 if %errorlevel% neq 0 (
     call :log_message "Lỗi: Cài đặt package thất bại. Đang khôi phục từ bản sao lưu..."
     if exist .next_backup (
@@ -356,3 +340,21 @@ call :log_message "Bắt đầu triển khai: %START_TIME%"
 call :log_message "Kết thúc triển khai: %END_TIME%"
 pause
 exit /b 0
+
+:: ====================================================================
+:: === Các Hàm
+:: ====================================================================
+
+:log_message
+echo [%time%] %~1
+echo [%time%] %~1 >> "%LOGFILE%"
+goto :eof
+
+:check_admin
+net session >nul 2>&1
+if %errorlevel% neq 0 (
+    set "HAS_ADMIN=false"
+) else (
+    set "HAS_ADMIN=true"
+)
+goto :eof
