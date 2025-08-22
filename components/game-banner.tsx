@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import DownloadPage from "@/components/game-download";
+import { BadgePlus, Bell, Download } from "lucide-react";
 
 export function GameBanner() {
   const router = useRouter();
@@ -46,18 +47,24 @@ export function GameBanner() {
                     onClick={() => setIsModalOpen(true)}
                     className="bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white px-6 py-3 rounded-lg text-base font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 border border-emerald-500 w-full"
                   >
-                    ⬇️ TẢI GAME
+                    <span className="flex items-center justify-center gap-2">
+                      <Download className="animate-bounce" /> TẢI GAME
+                    </span>
                   </button>
                   <button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-lg text-base font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 border border-blue-500 w-full">
-                    📝 ĐĂNG KÝ
+                    <span className="flex items-center justify-center gap-2">
+                      <BadgePlus className="animate-pulse" /> ĐĂNG KÝ
+                    </span>
                   </button>
                   <button
                     onClick={() => {
                       router.push("/tin-tuc");
                     }}
-                    className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-lg text-base font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 border border-blue-500 w-full"
+                    className="border-none bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white px-6 py-3 rounded-lg text-base font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 border  w-full"
                   >
-                    🔔 Tin tức
+                    <span className="flex items-center justify-center gap-2">
+                      <Bell className="animate-ping" /> TIN TỨC
+                    </span>
                   </button>
                 </div>
                 <div className="flex items-center justify-center space-y-1 text-xs text-yellow-400 gap-3">

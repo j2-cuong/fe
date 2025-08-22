@@ -3,15 +3,28 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { GameNavigation } from "@/components/game-navigation";
-import "./page.css";
+import { time } from "console";
 
 export const metadata: Metadata = {
-  title: "Hoạt động Bạch hổ đường - Thiên Tử Kiếm",
-  description:
-    "Tham gia hoạt động Bạch hổ đường với nhiều phần thưởng hấp dẫn và thử thách thú vị",
+  title: "Phúc lợi nạp thẻ - Thiên Tử Kiếm",
+  description: "Phúc lợi nạp thẻ - Thiên Tử Kiếm",
 };
 
 export default function PhucLoiNapThePage() {
+  const splitText = (text: string) => {
+    const words = text.split(" - ");
+    if (words.length !== 2) {
+      return <span className="text-xl text-red-600">{text} vạn đồng</span>;
+    }
+    return (
+      <>
+        <span className="text-base text-blue-600">{words[0]}</span>
+        {" - "}
+        <span className="text-xl text-red-600">{words[1]} vạn đồng</span>
+      </>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50">
       <GameNavigation />
@@ -73,12 +86,7 @@ export default function PhucLoiNapThePage() {
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span>{tier.milestone} vạn đồng</span>
-                      {tier.unlockTime && (
-                        <span className="text-sm text-gray-600">
-                          {tier.unlockTime}
-                        </span>
-                      )}
+                      <span>{splitText(tier.milestone)}</span>
                     </div>
                   </div>
 
@@ -120,12 +128,6 @@ export default function PhucLoiNapThePage() {
                 </div>
               ))}
             </div>
-
-            <div className="text-center mt-12">
-              <p className="inline-block bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-transparent text-lg font-bold">
-                Hãy nạp thẻ ngay để nhận những phần thưởng giá trị! 🎮
-              </p>
-            </div>
           </div>
         </article>
       </div>
@@ -140,13 +142,14 @@ const rewardTiers = [
     rewards: [
       {
         type: "special",
-        text: "Đặc quyền tu luyện mật tịch nhanh (10 vạn đồng/lượt)",
+        text: "Tu luyện mật tịch nhanh (10 vạn đồng/lượt)",
       },
       { type: "currency", text: "20 vạn đồng khoá" },
       { type: "currency", text: "70 vạn bạc khoá" },
       { type: "currency", text: "1 lệnh bài mở rộng rương (2)" },
       { type: "currency", text: "1 lệnh bài mở rộng rương (3)" },
       { type: "currency", text: "1 lệnh bài mở rộng rương (4)" },
+      { type: "special", text: "Mặt Nạ Tài Phú Ngất Trời" },
     ],
     stats: ["15 điểm tài phú", "Chí Mạng +10"],
     active: false,
@@ -155,10 +158,11 @@ const rewardTiers = [
     milestone: "2000",
     rewards: [
       { type: "special", text: "Danh Hiệu Thành Viên Thân Thiết + Vòng Sáng" },
-      { type: "special", text: "1 Lệnh Bài Uy Danh Giang Hồ" },
+      { type: "currency", text: "1 Lệnh Bài Uy Danh Giang Hồ" },
       { type: "currency", text: "3 Túi 24 ô" },
       { type: "currency", text: "30 vạn đồng khoá" },
       { type: "currency", text: "90 vạn bạc khoá" },
+      { type: "special", text: "Mã Bài Bôn Tiêu" },
     ],
     stats: [
       "100 điểm tài phú",
@@ -173,7 +177,7 @@ const rewardTiers = [
   {
     milestone: "4000",
     rewards: [
-      { type: "special", text: "1000 tiền du long (khóa)" },
+      { type: "currency", text: "1000 tiền du long (khóa)" },
       { type: "currency", text: "40 vạn đồng khoá" },
       { type: "currency", text: "100 vạn bạc khoá" },
       { type: "currency", text: "2000 NHHT (khoá)" },
@@ -189,7 +193,7 @@ const rewardTiers = [
     active: false,
   },
   {
-    milestone: "6000",
+    milestone: "Open máy chủ - 6000",
     rewards: [
       { type: "special", text: "Danh Hiệu Nhà Tài Trợ Đồng + Vòng Sáng" },
       { type: "special", text: "Mở khóa thú cưới mốc nạp 2000 vạn" },
@@ -212,7 +216,7 @@ const rewardTiers = [
     active: false,
   },
   {
-    milestone: "10000",
+    milestone: "Open máy chủ 10 ngày - 10000",
     rewards: [
       { type: "special", text: "Đặc quyền nhận mật tịch trung miễn phí" },
       { type: "special", text: "Mở khóa mặt nạ mốc 4000" },
@@ -233,7 +237,7 @@ const rewardTiers = [
     active: false,
   },
   {
-    milestone: "14000",
+    milestone: "Open máy chủ 17 ngày - 14000",
     rewards: [
       { type: "special", text: "Danh Hiệu Nhà Tài Trợ Bạc + Vòng Sáng" },
       { type: "special", text: "Đặc quyền nhận mật tịch cao miễn phí" },
@@ -259,7 +263,7 @@ const rewardTiers = [
     active: false,
   },
   {
-    milestone: "18000",
+    milestone: "Open máy chủ 24 ngày - 18000",
     rewards: [
       { type: "special", text: "Mở khóa mặt nạ mốc 10.000 vạn" },
       { type: "currency", text: "2000 tiền du long (khóa)" },
@@ -281,7 +285,7 @@ const rewardTiers = [
     active: false,
   },
   {
-    milestone: "23000",
+    milestone: "Open máy chủ 31 ngày - 23000",
     rewards: [
       { type: "special", text: "Danh Hiệu Nhà Tài Trợ Vàng + Vòng Sáng" },
       { type: "special", text: "Đặc quyền nhận phi phong miễn phí" },
@@ -307,7 +311,7 @@ const rewardTiers = [
     active: false,
   },
   {
-    milestone: "28000",
+    milestone: "Open máy chủ 38 ngày - 28000",
     rewards: [
       { type: "special", text: "Danh Hiệu Nhà Tài Trợ Bạch Kim + Vòng Sáng" },
       { type: "special", text: "Mở khóa mặt nạ mốc 19.000 vạn" },
@@ -332,7 +336,7 @@ const rewardTiers = [
     active: false,
   },
   {
-    milestone: "34000",
+    milestone: "Open máy chủ 45 ngày - 34000",
     rewards: [
       { type: "special", text: "Mở khóa thú cưỡi mốc 23.000 vạn" },
       { type: "currency", text: "2000 tiền du long (khóa)" },
@@ -358,7 +362,7 @@ const rewardTiers = [
     active: false,
   },
   {
-    milestone: "40000",
+    milestone: "Open máy chủ 53 ngày - 40000",
     rewards: [
       { type: "special", text: "Danh Hiệu Nhà Tài Trợ Kim Cương + Vòng Sáng" },
       { type: "special", text: "Mở khóa mặt nạ mốc nạp 28.000 vạn" },
@@ -383,7 +387,7 @@ const rewardTiers = [
     active: false,
   },
   {
-    milestone: "46000",
+    milestone: "Open máy chủ 60 ngày - 46000",
     rewards: [
       { type: "special", text: "Mở khoá ngựa mốc nạp 34.000 vạn" },
       { type: "currency", text: "2000 tiền du long (khóa)" },
@@ -410,7 +414,7 @@ const rewardTiers = [
     active: false,
   },
   {
-    milestone: "52000",
+    milestone: "Open máy chủ 67 ngày - 52000",
     rewards: [
       {
         type: "special",
@@ -438,7 +442,7 @@ const rewardTiers = [
     active: false,
   },
   {
-    milestone: "58000",
+    milestone: "Open máy chủ 74 ngày - 58000",
     rewards: [
       { type: "special", text: "Mở khoá ngựa mốc 46.000 vạn" },
       { type: "currency", text: "2500 tiền du long (khóa)" },
@@ -466,7 +470,7 @@ const rewardTiers = [
     active: false,
   },
   {
-    milestone: "64000",
+    milestone: "Open máy chủ 81 ngày - 64000",
     rewards: [
       {
         type: "special",
@@ -494,7 +498,7 @@ const rewardTiers = [
     active: false,
   },
   {
-    milestone: "72000",
+    milestone: "Open máy chủ 88 ngày - 72000",
     rewards: [
       {
         type: "special",
@@ -526,7 +530,7 @@ const rewardTiers = [
     active: false,
   },
   {
-    milestone: "80000",
+    milestone: "Open máy chủ 97 ngày - 80000",
     rewards: [
       { type: "special", text: "Danh Hiệu Tuyệt ĐỈnh Đại Phú Hào + Vòng Sáng" },
       { type: "special", text: "Mở khoá mật nạ mốc 64.000 vạn" },
@@ -552,7 +556,7 @@ const rewardTiers = [
     active: false,
   },
   {
-    milestone: "90000",
+    milestone: "Open máy chủ 104 ngày - 90000",
     rewards: [
       { type: "special", text: "Danh Hiệu CỬu Ngũ Chí Tôn + Vòng Sáng" },
       { type: "special", text: "Mở khoá ngựa mốc 72.000 vạn" },
@@ -582,7 +586,7 @@ const rewardTiers = [
     active: false,
   },
   {
-    milestone: "100000",
+    milestone: "Open máy chủ 111 ngày - 100000",
     rewards: [
       { type: "special", text: "Mở khoá ngựa mốc 90.000" },
       { type: "currency", text: "50 HTB khóa" },
