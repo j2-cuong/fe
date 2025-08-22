@@ -33,7 +33,6 @@ export const metadata: Metadata = {
     "bạch hổ đường",
     "tống kim",
     "võ lâm liên đấu",
-    "game thủ việt nam",
     "hoạt động game",
   ],
   authors: [{ name: "ArcadiaWorks" }],

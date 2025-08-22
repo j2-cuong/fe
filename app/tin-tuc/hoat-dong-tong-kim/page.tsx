@@ -25,7 +25,7 @@ export default function TongKimPage() {
         <article className="rounded-2xl p-8 shadow-lg bg-white">
           <header className="mb-8">
             <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
-              Phúc lợi nạp thẻ
+              Hoạt động tống kim
             </h1>
 
             <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-6">

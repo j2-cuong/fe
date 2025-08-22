@@ -76,7 +76,7 @@ export function GameNavigation() {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden text-gray-700" // Thêm text-gray-700 để chỉ định màu cho icon
+            className="md:hidden text-gray-700"
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"

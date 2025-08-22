@@ -3,12 +3,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { GameNavigation } from "@/components/game-navigation";
-import "./page.css";
 
 export const metadata: Metadata = {
-  title: "Hoạt động BVD - Thiên Tử Kiếm",
-  // description:
-  //   "Tham gia cuộc chiến Tống kim khốc liệt với những trận đấu PvP hấp dẫn",
+  title: "Hoạt động Bao Vạn Đồng - Thiên Tử Kiếm",
+  description: "Tham gia hoạt động Bao Vạn Đồng với nhiều phần thưởng hấp dẫn",
 };
 
 export default function BVDPage() {

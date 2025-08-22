@@ -144,3 +144,14 @@
 .text-shadow-xl {
   text-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
 }
+@keyframes slow-ping {
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-slow-ping {
+  animation: slow-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}

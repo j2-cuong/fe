@@ -7,8 +7,8 @@ import { GameNavigation } from "@/components/game-navigation";
 export const metadata: Metadata = {
   title: "Tham gia Group Zalo - Cộng đồng Thiên Tử Kiếm",
   description:
-    "Tham gia group Zalo để kết nối với cộng đồng game thủ Việt Nam, chia sẻ kinh nghiệm và nhận thông tin mới nhất",
-  keywords: "group zalo, cộng đồng game, game thủ việt nam, kết nối",
+    "Tham gia group Zalo để kết nối với Cộng đồng Thiên Tử Kiếm, chia sẻ kinh nghiệm và nhận thông tin mới nhất",
+  keywords: "Cộng đồng Thiên Tử Kiếm",
 };
 
 export default function GroupPage() {

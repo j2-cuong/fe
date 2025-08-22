@@ -32,7 +32,7 @@ export function GameBanner() {
           />
         </div>
 
-        <div className="relative z-20 text-center text-white px-4 sm:px-6 lg:px-8 mt-16">
+        <div className="relative z-20 text-center text-white px-4 sm:px-6 lg:px-8 lg:mt-16">
           <div className="max-w-sm mx-auto">
             <div className="space-y-4 relative w-full">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-200/30 to-blue-200/30 rounded-2xl blur-xl animate-pulse backdrop-blur-sm"></div>
@@ -53,7 +53,7 @@ export function GameBanner() {
                   </button>
                   <button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-lg text-base font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 border border-blue-500 w-full">
                     <span className="flex items-center justify-center gap-2">
-                      <BadgePlus className="animate-pulse" /> ĐĂNG KÝ
+                      <BadgePlus className="animate-bounce" /> ĐĂNG KÝ
                     </span>
                   </button>
                   <button
@@ -63,7 +63,7 @@ export function GameBanner() {
                     className="border-none bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white px-6 py-3 rounded-lg text-base font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 border  w-full"
                   >
                     <span className="flex items-center justify-center gap-2">
-                      <Bell className="animate-ping" /> TIN TỨC
+                      <Bell className="animate-bounce" /> TIN TỨC
                     </span>
                   </button>
                 </div>

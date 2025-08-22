@@ -5,9 +5,8 @@ import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { GameNavigation } from "@/components/game-navigation";
 
 export const metadata: Metadata = {
-  title: "Hoạt động Bạch hổ đường - Thiên Tử Kiếm",
-  description:
-    "Tham gia hoạt động Bạch hổ đường với nhiều phần thưởng hấp dẫn và thử thách thú vị",
+  title: "Hoạt động Đoán Hoa Đăng - Thiên Tử Kiếm",
+  description: "Tham gia hoạt động Đoán Hoa Đăng với nhiều phần thưởng hấp dẫn",
 };
 
 export default function DoanHoaDangPage() {

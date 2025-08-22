@@ -3,12 +3,11 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { GameNavigation } from "@/components/game-navigation";
-import "./page.css";
 
 export const metadata: Metadata = {
-  title: "Hoạt động Liên Đấu- Thiên Tử Kiếm",
+  title: "Hoạt động Săn boss Võ Lâm Cao Thủ - Thiên Tử Kiếm",
   description:
-    "Tham gia cuộc chiến Liên Đấu khốc liệt với những trận đấu PvP hấp dẫn",
+    "Tham gia cuộc chiến Săn boss Võ Lâm Cao Thủ với những trận đấu PvP hấp dẫn và phân thưởng giá trị",
 };
 
 export default function VoLamCaoThuPage() {

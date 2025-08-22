@@ -10,7 +10,6 @@ export const SandEffect = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Đặt kích thước canvas bằng với container
     const resize = () => {
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
@@ -18,7 +17,6 @@ export const SandEffect = () => {
     resize();
     window.addEventListener("resize", resize);
 
-    // Tạo các hạt cát
     const particles: Particle[] = [];
     const particleCount = 100;
 
@@ -58,12 +56,10 @@ export const SandEffect = () => {
       }
     }
 
-    // Khởi tạo các hạt
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
 
-    // Animation loop
     const animate = () => {
       if (!ctx) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);

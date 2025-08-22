@@ -3,12 +3,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { GameNavigation } from "@/components/game-navigation";
-import "./page.css";
 
 export const metadata: Metadata = {
   title: "Hoạt động Quân Doanh - Thiên Tử Kiếm",
-  // description:
-  //   "Tham gia cuộc chiến Tống kim khốc liệt với những trận đấu PvP hấp dẫn",
+  description: "Tham gia phó bản Quân Doanh với những phần thưởng hấp dẫn",
 };
 
 export default function QuanDoanhPage() {
@@ -26,7 +24,7 @@ export default function QuanDoanhPage() {
         <article className="rounded-2xl p-8 shadow-lg bg-white">
           <header className="mb-8">
             <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
-              Hoạt động Quân Doanh
+              Phó Bản Quân Doanh
             </h1>
 
             <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-6">

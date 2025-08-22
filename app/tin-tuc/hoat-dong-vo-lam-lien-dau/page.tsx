@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { GameNavigation } from "@/components/game-navigation";
-import "./page.css";
 
 export const metadata: Metadata = {
   title: "Hoạt động Liên Đấu- Thiên Tử Kiếm",

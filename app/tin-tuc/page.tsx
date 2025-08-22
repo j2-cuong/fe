@@ -340,14 +340,14 @@ export default function NewsPage() {
             <div className="mb-12">
               <Card className="bg-white/90 backdrop-blur-sm border-emerald-200 shadow-xl shadow-emerald-100/50 overflow-hidden">
                 <div className="grid md:grid-cols-2 gap-0">
-                  <div className="aspect-video md:aspect-auto bg-gradient-to-br from-emerald-100 to-blue-100 flex items-center justify-center">
+                  <div className="aspect-video md:aspect-auto bg-gradient-to-br from-emerald-100 to-blue-100 flex items-center justify-center ">
                     <Calendar className="w-16 h-16 text-emerald-600" />
                   </div>
                   <CardContent className="p-8">
                     <div className="mb-4">
-                      <span className="inline-block px-3 py-1 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-sm font-medium rounded-full shadow-lg">
+                      {/* <span className="inline-block px-3 py-1 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-sm font-medium rounded-full shadow-lg">
                         Nổi bật
-                      </span>
+                      </span> */}
                     </div>
                     <CardTitle className="text-2xl font-serif font-bold mb-4 text-gray-800">
                       {featuredArticle.title}
@@ -361,10 +361,10 @@ export default function NewsPage() {
                           <User className="w-4 h-4 text-blue-500" />
                           <span>{featuredArticle.author}</span>
                         </div>
-                        <div className="flex items-center space-x-1">
+                        {/* <div className="flex items-center space-x-1">
                           <Clock className="w-4 h-4 text-orange-500" />
                           <span>{featuredArticle.publishedAt}</span>
-                        </div>
+                        </div> */}
                       </div>
                       <Button
                         asChild

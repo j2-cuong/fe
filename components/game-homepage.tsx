@@ -38,7 +38,7 @@ const featuredArticles = [
     id: 3,
     title: "Hoạt động Tống kim",
     slug: "hoat-dong-tong-kim",
-    author: "GM Việt Nam",
+    author: "Administrator",
     publishedAt: "01/08/2025",
     time: "13 ngày trước",
     excerpt: "Cuộc chiến tranh kim khốc liệt...",
