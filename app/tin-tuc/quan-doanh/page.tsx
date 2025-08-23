@@ -5,7 +5,7 @@ import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { GameNavigation } from "@/components/game-navigation";
 
 export const metadata: Metadata = {
-  title: "Hoạt động Quân Doanh - Thiên Tử Kiếm",
+  title: "Hoạt động Quân Doanh - Kiếm Thế Thần Kiếm",
   description: "Tham gia phó bản Quân Doanh với những phần thưởng hấp dẫn",
 };
 

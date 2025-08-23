@@ -5,10 +5,10 @@ import { QrCode, MessageCircle, Users, ArrowRight } from "lucide-react";
 import { GameNavigation } from "@/components/game-navigation";
 
 export const metadata: Metadata = {
-  title: "Tham gia Group Zalo - Cộng đồng Thiên Tử Kiếm",
+  title: "Tham gia Group Zalo - Cộng đồng Kiếm Thế Thần Kiếm",
   description:
-    "Tham gia group Zalo để kết nối với Cộng đồng Thiên Tử Kiếm, chia sẻ kinh nghiệm và nhận thông tin mới nhất",
-  keywords: "Cộng đồng Thiên Tử Kiếm",
+    "Tham gia group Zalo để kết nối với Cộng đồng Kiếm Thế Thần Kiếm, chia sẻ kinh nghiệm và nhận thông tin mới nhất",
+  keywords: "Cộng đồng Kiếm Thế Thần Kiếm",
 };
 
 export default function GroupPage() {
@@ -56,10 +56,10 @@ export default function GroupPage() {
               <CardContent className="space-y-6">
                 <div>
                   <h3 className="font-semibold text-slate-800 mb-2">
-                    Thiên Tử Kiếm Official
+                    Kiếm Thế Thần Kiếm Official
                   </h3>
                   <p className="text-slate-600 text-sm">
-                    Group chính thức của cộng đồng Thiên Tử Kiếm
+                    Group chính thức của cộng đồng Kiếm Thế Thần Kiếm
                   </p>
                 </div>
 

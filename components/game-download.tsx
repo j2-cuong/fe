@@ -20,7 +20,7 @@ const gameDownloads = [
   },
   {
     id: 2,
-    name: "Patch Thiên Tử Kiếm 1.0.1",
+    name: "Patch Kiếm Thế Thần Kiếm 1.0.1",
     size: "2,4 Gb",
     updateDate: "02/08/2025",
     md5: "b2c3d4e5f6789012345678901234567890abcde1",
@@ -47,7 +47,7 @@ const gameDownloads = [
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Thiên Tử Kiếm - Kiếm Thế PC 2009",
+  name: "Kiếm Thế Thần Kiếm - Kiếm Thế PC 2009",
   description: "Tải game và các bản cập nhật mới nhất",
   url: "https://thientukiem.com/tai-game",
 };

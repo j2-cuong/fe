@@ -34,17 +34,17 @@ export function GameNavigation() {
           <Link
             href="/"
             className="flex items-center space-x-2 group"
-            aria-label="Về trang chủ Thiên Tử Kiếm"
+            aria-label="Về trang chủ Kiếm Thế Thần Kiếm"
           >
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center">
               <img
-                src="/website_logo.png"
-                alt="Thiên Tử Kiếm - Kiếm Thế PC 2009"
-                className="w-full h-full object-cover object-center !bg-transparent"
+                src="/logo.png"
+                alt="Kiếm Thế Thần Kiếm - Kiếm Thế PC 2009"
+                className="w-full h-full object-cover object-center !bg-transparent rounded-full"
               />
             </div>
             <span className="font-serif font-bold text-lg sm:text-xl text-gray-800 group-hover:text-emerald-600 transition-colors">
-              Thiên Tử Kiếm
+              Kiếm Thế Thần Kiếm
             </span>
           </Link>
 

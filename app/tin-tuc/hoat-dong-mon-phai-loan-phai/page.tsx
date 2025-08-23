@@ -5,9 +5,9 @@ import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { GameNavigation } from "@/components/game-navigation";
 
 export const metadata: Metadata = {
-  title: "Hoạt động Môn Phái - Thiên Tử Kiếm",
+  title: "Hoạt động Môn Phái - Kiếm Thế Thần Kiếm",
   description:
-    "Phúc lợi nạp thẻ và phần thưởng giá trị trong game Thiên Tử Kiếm",
+    "Phúc lợi nạp thẻ và phần thưởng giá trị trong game Kiếm Thế Thần Kiếm",
 };
 
 // Định nghĩa dữ liệu phần thưởng

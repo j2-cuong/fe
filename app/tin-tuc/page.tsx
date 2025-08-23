@@ -12,7 +12,7 @@ import { GameNavigation } from "@/components/game-navigation";
 const metadata: Metadata = {
   title: "Tin Tức Game - Cập nhật sự kiện và hoạt động mới nhất",
   description:
-    "Theo dõi tin tức game, sự kiện và hoạt động mới nhất trong cộng đồng Thiên Tử Kiếm",
+    "Theo dõi tin tức game, sự kiện và hoạt động mới nhất trong cộng đồng Kiếm Thế Thần Kiếm",
   keywords: "tin tức game, sự kiện game, hoạt động game, cập nhật game",
 };
 
@@ -284,7 +284,7 @@ export default function NewsPage() {
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Cập nhật những tin tức, sự kiện và hoạt động mới nhất trong cộng
-              đồng Thiên Tử Kiếm
+              đồng Kiếm Thế Thần Kiếm
             </p>
           </div>
 

@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import DownloadPage from "@/components/game-download";
-import { BadgePlus, Bell, Download } from "lucide-react";
+import { BadgePlus, Bell, Download, User } from "lucide-react";
 
 export function GameBanner() {
   const router = useRouter();
@@ -20,7 +20,7 @@ export function GameBanner() {
     <>
       <section
         className="relative h-screen flex items-center justify-center overflow-hidden"
-        aria-label="Banner chính của Thiên Tử Kiếm"
+        aria-label="Banner chính của Kiếm Thế Thần Kiếm"
         role="banner"
       >
         <div className="absolute inset-0 z-0">
@@ -32,7 +32,7 @@ export function GameBanner() {
           />
         </div>
 
-        <div className="relative z-20 text-center text-white px-4 sm:px-6 lg:px-8 lg:mt-16">
+        <div className="relative z-20 text-center text-white px-3 sm:px-6 lg:px-8 lg:mt-16 w-full">
           <div className="max-w-sm mx-auto">
             <div className="space-y-4 relative w-full">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-200/30 to-blue-200/30 rounded-2xl blur-xl animate-pulse backdrop-blur-sm"></div>
@@ -41,7 +41,6 @@ export function GameBanner() {
                 <h2 className="text-2xl font-serif font-bold text-white mb-3 text-shadow-lg">
                   Tải Game Ngay
                 </h2>
-                <p>Trải nghiệm đỉnh cao và gameplay hấp dẫn</p> <br />
                 <div className="flex flex-col gap-3 justify-center items-center mb-4">
                   <button
                     onClick={() => setIsModalOpen(true)}
@@ -51,9 +50,26 @@ export function GameBanner() {
                       <Download className="animate-bounce" /> TẢI GAME
                     </span>
                   </button>
-                  <button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-lg text-base font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 border border-blue-500 w-full">
+                  <button
+                    onClick={() => {
+                      window.location.href =
+                        "http://taikhoan.ktthankiem.com/register.html";
+                    }}
+                    className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-lg text-base font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 border border-blue-500 w-full"
+                  >
                     <span className="flex items-center justify-center gap-2">
                       <BadgePlus className="animate-bounce" /> ĐĂNG KÝ
+                    </span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      window.location.href =
+                        "http://taikhoan.ktthankiem.com/login.html";
+                    }}
+                    className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-lg text-base font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 border border-blue-500 w-full"
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      <User className="animate-bounce" /> TÀI KHOẢN
                     </span>
                   </button>
                   <button

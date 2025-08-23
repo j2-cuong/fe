@@ -6,8 +6,8 @@ import { GameNavigation } from "@/components/game-navigation";
 import { time } from "console";
 
 export const metadata: Metadata = {
-  title: "Phúc lợi nạp thẻ - Thiên Tử Kiếm",
-  description: "Phúc lợi nạp thẻ - Thiên Tử Kiếm",
+  title: "Phúc lợi nạp thẻ - Kiếm Thế Thần Kiếm",
+  description: "Phúc lợi nạp thẻ - Kiếm Thế Thần Kiếm",
 };
 
 export default function PhucLoiNapThePage() {

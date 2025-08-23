@@ -5,9 +5,9 @@ import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { GameNavigation } from "@/components/game-navigation";
 
 export const metadata: Metadata = {
-  title: "Hoạt động Quà Open - Thiên Tử Kiếm",
+  title: "Hoạt động Quà Open - Kiếm Thế Thần Kiếm",
   description:
-    "Nhận quà hỗ trợ tân thủ khi tham gia Open server và các loại code trong game Thiên Tử Kiếm",
+    "Nhận quà hỗ trợ tân thủ khi tham gia Open server và các loại code trong game Kiếm Thế Thần Kiếm",
 };
 
 // Định nghĩa dữ liệu quà open
