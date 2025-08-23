@@ -20,14 +20,6 @@ const gameDownloads = [
   },
   {
     id: 2,
-    name: "Patch Kiếm Thế Thần Kiếm 1.0.1",
-    size: "2,4 Gb",
-    updateDate: "02/08/2025",
-    md5: "b2c3d4e5f6789012345678901234567890abcde1",
-    downloadLink: "#",
-  },
-  {
-    id: 3,
     name: "AutoPK",
     size: "2.4 MB",
     updateDate: "02/08/2025",
@@ -35,7 +27,7 @@ const gameDownloads = [
     downloadLink: "#",
   },
   {
-    id: 4,
+    id: 3,
     name: "UltraViewer 6.6.124",
     size: "3,5 MB",
     updateDate: "07/02/20254",

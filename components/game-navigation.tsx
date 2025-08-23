@@ -15,7 +15,7 @@ export function GameNavigation() {
     { href: "/", label: "Trang chủ", icon: Home },
     { href: "/tin-tuc", label: "Tin tức", icon: Newspaper },
     {
-      href: "https://facebook.com/gamevietnam",
+      href: "https://www.facebook.com/profile.php?id=61579595318543",
       label: "Cộng đồng",
       icon: Users,
       external: true,

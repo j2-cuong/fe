@@ -90,7 +90,7 @@ export const metadata: Metadata = {
       "Website Kiếm Thế Thần Kiếm - Kiếm thế PC 2009 với tin tức, sự kiện và cộng đồng game thủ. Tham gia ngay để trải nghiệm những hoạt động hấp dẫn nhất.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/logo.png",
         width: 1200,
         height: 630,
         alt: "Kiếm Thế Thần Kiếm - Kiếm thế PC 2009",
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
     title: "Kiếm Thế Thần Kiếm - Kiếm thế PC 2009",
     description:
       "Website Kiếm Thế Thần Kiếm - Kiếm thế PC 2009 với tin tức, sự kiện và cộng đồng game thủ",
-    images: ["/og-image.png"],
+    images: ["/logo.png"],
     creator: "@gamevietnam",
   },
   alternates: {
@@ -157,6 +157,10 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <meta name="msapplication-TileColor" content="#059669" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
+        <meta
+          name="google-site-verification"
+          content="RjJmLrscrLLAHLoAXYWz5F820LflwPSgRDjnMXe-AQc"
+        />
         <style>{`
           html {
             font-family: ${openSans.style.fontFamily};
