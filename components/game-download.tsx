@@ -49,7 +49,7 @@ const structuredData = {
   "@type": "WebPage",
   name: "Kiếm Thế Thần Kiếm - Kiếm Thế PC 2009",
   description: "Tải game và các bản cập nhật mới nhất",
-  url: "https://thientukiem.com/tai-game",
+  url: "https://ktthankiem.com/tai-game",
 };
 
 export default function DownloadPage({ isOpen, onClose }: DownloadPageProps) {

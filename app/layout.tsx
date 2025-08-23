@@ -19,13 +19,13 @@ const openSans = Open_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Thiên tử kiếm - Kiếm thế PC 2009",
-    template: "%s | Thiên Tử Kiếm",
+    default: "Kiếm Thế Thần Kiếm - Kiếm thế PC 2009",
+    template: "%s | Kiếm Thế Thần Kiếm",
   },
   description:
-    "Trang chủ của Thiên Tử Kiếm với tin tức, sự kiện và cộng đồng game thủ. Tham gia ngay để trải nghiệm những hoạt động hấp dẫn nhất như Bạch hổ đường, Tống kim, Võ Lâm liên đấu.",
+    "Trang chủ của Kiếm Thế Thần Kiếm với tin tức, sự kiện và cộng đồng game thủ. Tham gia ngay để trải nghiệm những hoạt động hấp dẫn nhất như Bạch hổ đường, Tống kim, Võ Lâm liên đấu.",
   keywords: [
-    "Thiên tử kiếm - Kiếm thế PC 2009",
+    "Kiếm Thế Thần Kiếm - Kiếm thế PC 2009",
     "cộng đồng game",
     "tin tức game",
     "sự kiện game",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   generator: "Next.js",
-  applicationName: "Thiên tử kiếm - Kiếm thế PC 2009",
+  applicationName: "Kiếm Thế Thần Kiếm - Kiếm thế PC 2009",
   referrer: "origin-when-cross-origin",
   colorScheme: "dark",
   themeColor: [
@@ -83,32 +83,32 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "vi_VN",
-    url: "https://thientukiem.com",
-    siteName: "Thiên tử kiếm - Kiếm thế PC 2009",
-    title: "Thiên tử kiếm - Kiếm thế PC 2009",
+    url: "https://ktthankiem.com",
+    siteName: "Kiếm Thế Thần Kiếm - Kiếm thế PC 2009",
+    title: "Kiếm Thế Thần Kiếm - Kiếm thế PC 2009",
     description:
-      "Website Thiên tử kiếm - Kiếm thế PC 2009 với tin tức, sự kiện và cộng đồng game thủ. Tham gia ngay để trải nghiệm những hoạt động hấp dẫn nhất.",
+      "Website Kiếm Thế Thần Kiếm - Kiếm thế PC 2009 với tin tức, sự kiện và cộng đồng game thủ. Tham gia ngay để trải nghiệm những hoạt động hấp dẫn nhất.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Thiên tử kiếm - Kiếm thế PC 2009",
+        alt: "Kiếm Thế Thần Kiếm - Kiếm thế PC 2009",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Thiên tử kiếm - Kiếm thế PC 2009",
+    title: "Kiếm Thế Thần Kiếm - Kiếm thế PC 2009",
     description:
-      "Website Thiên tử kiếm - Kiếm thế PC 2009 với tin tức, sự kiện và cộng đồng game thủ",
+      "Website Kiếm Thế Thần Kiếm - Kiếm thế PC 2009 với tin tức, sự kiện và cộng đồng game thủ",
     images: ["/og-image.png"],
     creator: "@gamevietnam",
   },
   alternates: {
-    canonical: "https://thientukiem.com",
+    canonical: "https://ktthankiem.com",
     languages: {
-      "vi-VN": "https://thientukiem.com",
+      "vi-VN": "https://ktthankiem.com",
     },
   },
   category: "gaming",
@@ -128,22 +128,21 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "Thiên tử kiếm - Kiếm thế PC 2009",
+              name: "Kiếm Thế Thần Kiếm - Kiếm thế PC 2009",
               description:
-                "Website Thiên tử kiếm - Kiếm thế PC 2009 với tin tức, sự kiện và cộng đồng game thủ",
-              url: "https://thientukiem.com",
+                "Website Kiếm Thế Thần Kiếm - Kiếm thế PC 2009 với tin tức, sự kiện và cộng đồng game thủ",
+              url: "https://ktthankiem.com",
               potentialAction: {
                 "@type": "SearchAction",
-                target:
-                  "https://thientukiem.com/tin-tuc?q={search_term_string}",
+                target: "https://ktthankiem.com/tin-tuc?q={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
               publisher: {
                 "@type": "Organization",
-                name: "Thiên Tử Kiếm",
+                name: "Kiếm Thế Thần Kiếm",
                 logo: {
                   "@type": "ImageObject",
-                  url: "https://thientukiem.com/logo.png",
+                  url: "https://ktthankiem.com/logo.png",
                 },
               },
             }),

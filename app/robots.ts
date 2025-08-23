@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/private/", "/admin/"],
     },
-    sitemap: "https://thientukiem.com/sitemap.xml",
+    sitemap: "https://ktthankiem.com/sitemap.xml",
   };
 }

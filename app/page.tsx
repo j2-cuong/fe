@@ -10,7 +10,7 @@ const structuredData = {
   name: "Kiếm Thế Thần Kiếm - Kiếm thế PC 2009",
   description:
     "Trang chủ Kiếm Thế Thần Kiếm - Kiếm thế PC 2009 với tin tức, sự kiện và hoạt động mới nhất",
-  url: "https://thientukiem.com",
+  url: "https://ktthankiem.com",
   mainEntity: {
     "@type": "VideoGame",
     name: "Kiếm Thế",

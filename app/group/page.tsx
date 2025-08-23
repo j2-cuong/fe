@@ -35,7 +35,7 @@ export default function GroupPage() {
                   <span>Quét mã QR</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent className="pt-2 pl-8 pr-8">
+              <CardContent className="!px-0 lg:!px-6 pt-2 lg:pl-8 lg:pr-8">
                 <div className="w-80 h-80 mx-auto bg-gradient-to-br from-emerald-100 to-blue-100 rounded-lg flex items-center justify-center mb-6 border-2 border-emerald-200">
                   <div className="text-center">
                     <QrCode className="w-60 h-60 text-emerald-600 mx-auto mb-2" />

@@ -2,12 +2,12 @@
     email j2.cuong@gmail.com
 }
 
-thientukiem.com {
-    redir https://www.thientukiem.com{uri} permanent
+ktthankiem.com {
+    redir https://www.ktthankiem.com{uri} permanent
 }
 
-www.thientukiem.com {
-    encode zstd gzip            # nén ph?n h?i
+www.ktthankiem.com {
+    encode zstd gzip            # nï¿½n ph?n h?i
     reverse_proxy 127.0.0.1:3000
 
     # M?t s? security headers co b?n (tu? ch?n)
