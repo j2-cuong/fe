@@ -34,6 +34,9 @@ export const metadata: Metadata = {
     "tống kim",
     "võ lâm liên đấu",
     "hoạt động game",
+    "kiếm thế mới ra",
+    "kiếm thế private",
+    "kiếm thế kiếm thế",
   ],
   authors: [{ name: "ArcadiaWorks" }],
   creator: "ArcadiaWorks",
@@ -90,7 +93,7 @@ export const metadata: Metadata = {
       "Website Kiếm Thế Thần Kiếm - Kiếm thế PC 2009 với tin tức, sự kiện và cộng đồng game thủ. Tham gia ngay để trải nghiệm những hoạt động hấp dẫn nhất.",
     images: [
       {
-        url: "/logo.png",
+        url: "https://ktthankiem.com/logo.png",
         width: 1200,
         height: 630,
         alt: "Kiếm Thế Thần Kiếm - Kiếm thế PC 2009",
@@ -102,7 +105,7 @@ export const metadata: Metadata = {
     title: "Kiếm Thế Thần Kiếm - Kiếm thế PC 2009",
     description:
       "Website Kiếm Thế Thần Kiếm - Kiếm thế PC 2009 với tin tức, sự kiện và cộng đồng game thủ",
-    images: ["/logo.png"],
+    images: ["https://ktthankiem.com/logo.png"],
     creator: "@gamevietnam",
   },
   alternates: {
