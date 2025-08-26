@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Calendar, User, Clock, ArrowRight, Search } from "lucide-react";
 import { GameNavigation } from "@/components/game-navigation";
+import { time } from "console";
 
 const metadata: Metadata = {
   title: "Tin Tức Game - Cập nhật sự kiện và hoạt động mới nhất",
@@ -26,10 +27,11 @@ const newsArticles = [
     excerpt: "Tìm hiểu về các phúc lợi và ưu đãi khi nạp thẻ vào game",
     category: "Nạp thẻ",
     featured: true,
+    timeLife: "Hàng ngày",
   },
   {
     id: 1,
-    title: "Hoạt động Bạch Hổ Đường (Active)",
+    title: "Bạch Hổ Đường (Active)",
     slug: "hoat-dong-bach-ho-duong",
     author: "Administrator",
     publishedAt: "01/08/2025",
@@ -37,74 +39,82 @@ const newsArticles = [
       "Khám phá hoạt động Bạch Hổ Đường với phần thưởng hấp dẫn và thử thách khốc liệt",
     category: "Hoạt Động",
     featured: false,
+    timeLife: "Hàng ngày",
   },
   {
     id: 2,
-    title: "Hoạt động Tiêu Dao Cốc(Active)",
+    title: "Tiêu Dao Cốc(Active)",
     slug: "hoat-dong-tieu-dao-coc",
     author: "Administrator",
     publishedAt: "01/08/2025",
     excerpt:
       "Tham gia hoạt động Tiêu Dao Cốc để nhận được những phần thưởng giá trị",
     category: "Hoạt Động",
+    timeLife: "Hàng ngày",
   },
   {
     id: 3,
-    title: "Hoạt động Tống Kim (Active)",
+    title: "Tống Kim (Active)",
     slug: "hoat-dong-tong-kim",
     author: "Administrator",
     publishedAt: "01/08/2025",
     excerpt:
       "Cuộc chiến Tống kim với những trận đấu kịch tính và phần thưởng khủng",
     category: "Hoạt Động",
+    timeLife: "Hàng ngày",
   },
   {
     id: 4,
-    title: "Hoạt động Tần thủy hoàng",
-    slug: "hoat-dong-tan-thuy-hoang",
+    title: "Tần thủy hoàng",
+    slug: "tan-thuy-hoang",
     author: "Administrator",
     publishedAt: "01/08/2025",
     excerpt: "Thử thách từ hoàng đế Tần Thủy Hoàng với những nhiệm vụ đặc biệt",
     category: "Hoạt Động",
+    timeLife: "Hàng ngày",
   },
   {
     id: 5,
-    title: "Hoạt động Hỏa kỳ lân",
-    slug: "hoat-dong-hoa-ky-lan",
+    title: "Hỏa kỳ lân",
+    slug: "hoa-ky-lan",
     author: "Administrator",
     publishedAt: "01/08/2025",
     excerpt:
       "Chinh phục linh thú huyền thoại Hỏa kỳ lân để nhận phần thưởng độc quyền",
     category: "Hoạt Động",
+    timeLife: "Thứ 2",
   },
   {
     id: 6,
-    title: "Hoạt động tranh đoạt lãnh thổ",
-    slug: "hoat-dong-tranh-doat-lanh-tho",
+    title: "Tranh đoạt lãnh thổ",
+    slug: "tranh-doat-lanh-tho",
     author: "Administrator",
     publishedAt: "01/08/2025",
     excerpt: "Tham gia tranh đoạt lãnh thổ để khẳng định sức mạnh bang hội",
     category: "Hoạt Động",
+    timeLife: "Thứ 7 và Chủ Nhật",
   },
   {
     id: 7,
-    title: "Hoạt động Bao Vạn Đồng (Active)",
+    title: "Bao Vạn Đồng (Active)",
     slug: "hoat-dong-bao-van-dong",
     author: "Administrator",
     publishedAt: "01/08/2025",
     excerpt:
       "Sự kiện Bao Vạn Đồng với cơ hội nhận được vô số phần thưởng giá trị",
     category: "Hoạt Động",
+    timeLife: "Hàng ngày",
   },
   {
     id: 8,
-    title: "Hoạt động Võ Lâm liên đấu (song đấu) (Active)",
+    title: "Võ Lâm liên đấu (song đấu) (Active)",
     slug: "hoat-dong-vo-lam-lien-dau",
     author: "Mod PvP",
     publishedAt: "01/08/2025",
     excerpt:
       "Võ Lâm liên đấu - nơi các cao thủ thể hiện kỹ năng trong những trận song đấu",
     category: "Hoạt Động",
+    timeLife: "Thứ 2 và Thứ 4",
   },
   {
     id: 9,
@@ -115,6 +125,7 @@ const newsArticles = [
     excerpt:
       "Tham gia Quân Doanh để trải nghiệm chiến thuật và nhận phần thưởng hấp dẫn",
     category: "Hoạt Động",
+    timeLife: "Hàng ngày",
   },
   {
     id: 11,
@@ -125,6 +136,7 @@ const newsArticles = [
     excerpt:
       "Tham gia đoán hoa đăng để thử vận may và nhận phần thưởng bất ngờ",
     category: "Mini Game",
+    timeLife: "Thứ 2 và thứ 4",
   },
   {
     id: 12,
@@ -134,34 +146,47 @@ const newsArticles = [
     publishedAt: "01/08/2025",
     excerpt: "Hoạt động Thương Hội - nơi giao thương và trao đổi vật phẩm",
     category: "Hoạt Động",
+    timeLife: "Hàng ngày",
   },
   {
     id: 13,
-    title: "Hoạt động Môn Phái & Loạn Phái",
-    slug: "hoat-dong-mon-phai-loan-phai",
+    title: "Thi đấu Loạn Phái",
+    slug: "hoat-dong-loan-phai",
     author: "Administrator",
     publishedAt: "01/08/2025",
-    excerpt:
-      "Tham gia hoạt động Môn Phái và Loạn Phái để thể hiện sức mạnh phái phái",
+    excerpt: "Tham gia hoạt động Loạn Phái để thể hiện sức mạnh",
     category: "Hoạt Động",
+    timeLife: "Thứ 6",
   },
   {
     id: 14,
-    title: "Hoạt động Hoàng Thành Tranh Bá (CTC)(Active)",
+    title: "Thi đấu Môn Phái",
+    slug: "hoat-dong-mon-phai",
+    author: "Administrator",
+    publishedAt: "01/08/2025",
+    excerpt: "Tham gia hoạt động Môn Phái",
+    category: "Hoạt Động",
+    timeLife: "Thứ 3",
+  },
+  {
+    id: 15,
+    title: "Hoàng Thành Tranh Bá (CTC)(Active)",
     slug: "hoat-dong-hoang-thanh-tranh-ba",
     author: "Administrator",
     publishedAt: "01/08/2025",
     excerpt: "Hoàng Thành Tranh Bá - cuộc chiến quyết định ai sẽ là bá chủ",
     category: "Hoạt Động",
+    timeLife: "Thứ 5",
   },
   {
-    id: 15,
+    id: 16,
     title: "Các lỗi thường gặp",
     slug: "cac-loi-thuong-gap",
     author: "Administrator",
     publishedAt: "01/08/2025",
     excerpt: "Hướng dẫn khắc phục các lỗi thường gặp khi chơi game",
     category: "Hỗ trợ",
+    timeLife: "",
   },
   {
     id: 17,
@@ -171,6 +196,7 @@ const newsArticles = [
     publishedAt: "01/08/2025",
     excerpt: "Thưởng cấp",
     category: "Hoạt Động",
+    timeLife: "",
   },
   {
     id: 18,
@@ -180,6 +206,7 @@ const newsArticles = [
     publishedAt: "01/08/2025",
     excerpt: "Hỗ trợ Open",
     category: "Hoạt Động",
+    timeLife: "",
   },
   {
     id: 19,
@@ -187,8 +214,9 @@ const newsArticles = [
     slug: "hoat-dong-hai-tac",
     author: "Administrator",
     publishedAt: "01/08/2025",
-    excerpt: "Hỗ trợ Open",
+    excerpt: "Tham gia truy nã hải tặc để nhận được những phần thưởng hấp dẫn",
     category: "Hoạt Động",
+    timeLife: "Hàng ngày",
   },
   {
     id: 20,
@@ -196,8 +224,10 @@ const newsArticles = [
     slug: "hoat-dong-vo-lam-cao-thu",
     author: "Administrator",
     publishedAt: "01/08/2025",
-    excerpt: "Hỗ trợ Open",
+    excerpt:
+      "Tham gia săn boss Võ Lâm Cao Thủ để nhận được những phần thưởng hấp dẫn",
     category: "Hoạt Động",
+    timeLife: "Hàng ngày",
   },
 ];
 
@@ -244,6 +274,7 @@ export default function NewsPage() {
     const filtered = newsArticles.filter((article) => {
       const matchesSearch =
         article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        article.timeLife.toLowerCase().includes(searchTerm.toLowerCase()) ||
         article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesFilter =
         activeFilter === "all" || article.category === activeFilter;
@@ -291,15 +322,15 @@ export default function NewsPage() {
           {/* Search and Filter Section */}
           <div className="mb-8 space-y-6">
             {/* Search Bar */}
-            <div className="max-w-md mx-auto">
+            <div className="max-w-md mx-auto ">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2  w-5 h-5 !text-red-600" />
                 <Input
                   type="text"
-                  placeholder="Tìm kiếm bài viết..."
+                  placeholder="Tìm kiếm bài viết hoặc thời gian..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 pr-4 py-3 w-full border-2 border-gray-200 focus:border-emerald-400 focus:ring-emerald-200 rounded-lg bg-white/90 backdrop-blur-sm"
+                  className="pl-10 pr-4 py-3 w-full bg-white text-black backdrop-blur-sm !border-green-500 focus:!border-green-500 focus:!ring-0 focus:!outline-none"
                 />
               </div>
             </div>

@@ -1,0 +1,185 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
+import { GameNavigation } from "@/components/game-navigation";
+
+export const metadata: Metadata = {
+  title: "Thi đấu Môn Phái - Kiếm Thế Thần Kiếm",
+  description:
+    "Thời gian và phần thưởng thi đấu Môn Phái trong Kiếm Thế Thần Kiếm",
+};
+
+// Định nghĩa dữ liệu phần thưởng (Loạn Phái)
+const rewardTiers = [
+  {
+    milestone: "Quán Quân",
+    rewards: [
+      { type: "special", text: "Danh hiệu Tân Nhân Vương" },
+      { type: "special", text: "Mốc nạp 70 vạn" },
+      { type: "currency", text: "30 vạn đồng" },
+      { type: "currency", text: "12 viên Huyền tinh 6 (không khóa)" },
+      { type: "currency", text: "10 điểm Uy Danh" },
+      { type: "special", text: "200 điểm công trạng" },
+    ],
+    active: true,
+  },
+  {
+    milestone: "Á Quân",
+    rewards: [
+      { type: "special", text: "Mốc nạp 50 vạn" },
+      { type: "currency", text: "20 vạn đồng" },
+      { type: "currency", text: "8 viên Huyền tinh 6 (không khóa)" },
+      { type: "currency", text: "70 điểm Uy Danh" },
+      { type: "special", text: "160 điểm công trạng" },
+    ],
+    active: true,
+  },
+  {
+    milestone: "Top 4",
+    rewards: [
+      { type: "special", text: "Mốc nạp 40 vạn" },
+      { type: "currency", text: "15 vạn đồng" },
+      { type: "currency", text: "5 huyền tinh 6 (không khóa)" },
+      { type: "currency", text: "5 điểm Uy Danh" },
+      { type: "special", text: "120 điểm công trạng" },
+    ],
+    active: false,
+  },
+  {
+    milestone: "Top 8",
+    rewards: [
+      { type: "special", text: "Mốc nạp 30 vạn" },
+      { type: "currency", text: "10 vạn đồng" },
+      { type: "currency", text: "3 huyền tinh 6 (không khóa)" },
+      { type: "currency", text: "3 điểm Uy Danh" },
+      { type: "special", text: "80 điểm công trạng" },
+    ],
+    active: false,
+  },
+  {
+    milestone: "Top 16",
+    rewards: [
+      { type: "special", text: "Mốc nạp 20 vạn" },
+      { type: "currency", text: "5 vạn Đồng" },
+      { type: "currency", text: "2 Huyền tinh 6 (không khóa)" },
+      { type: "currency", text: "2 điểm Uy Danh" },
+      { type: "special", text: "40 điểm công trạng" },
+    ],
+    active: false,
+  },
+  {
+    milestone: "Khuyến khích tham gia",
+    rewards: [
+      { type: "special", text: "Yêu cầu tham gia hết vòng loạn chiến" },
+      { type: "special", text: "Mốc nạp 10 vạn" },
+      { type: "currency", text: "2 Huyền tinh 6 (khóa)" },
+      { type: "currency", text: "2 điểm Uy Danh" },
+    ],
+    active: false,
+  },
+];
+
+export default function MonPhaiPage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50">
+      <GameNavigation />
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <Link href="/tin-tuc">
+          <Button variant="ghost" className="mb-6 group">
+            <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+            Quay lại tin tức
+          </Button>
+        </Link>
+
+        <article className="rounded-2xl p-8 shadow-lg bg-white">
+          <header className="mb-8">
+            <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
+              Thi đấu Môn Phái
+            </h1>
+
+            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-6">
+              <div className="flex items-center space-x-2">
+                <User className="h-4 w-4 text-blue-500" />
+                <span className="text-red-500">Administrator</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Calendar className="h-4 w-4 text-red-500" />
+                <span>01/08/2025</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Tag className="h-4 w-4 text-yellow-500" />
+                <span className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs">
+                  Sự kiện
+                </span>
+              </div>
+            </div>
+          </header>
+
+          <div className="prose prose-lg max-w-none">
+            <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">
+              Thời gian diễn ra
+            </h2>
+            <div className="bg-blue-50 p-4 rounded-lg mb-6">
+              <ul className="space-y-2 text-blue-700">
+                <li>Diễn ra vào thứ 6 hàng tuần</li>
+                <li>Báo danh từ 19:50</li>
+                <li>Tham gia hoạt động từ 20:00 đến 20:45</li>
+              </ul>
+            </div>
+
+            <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-lg mb-6">
+              <h3 className="font-bold text-yellow-800 flex items-center gap-2 mb-2">
+                <span className="text-xl">⚠️</span> Lưu ý quan trọng:
+              </h3>
+              <p className="text-yellow-700">Không diễn ra hoạt động tìm cờ</p>
+            </div>
+
+            <div className="space-y-6">
+              {rewardTiers.map((tier, index) => (
+                <div
+                  key={index}
+                  className={`bg-white rounded-xl border ${
+                    tier.active ? "border-emerald-200" : "border-gray-200"
+                  } shadow-sm overflow-hidden`}
+                >
+                  <div
+                    className={`px-4 py-3 font-medium ${
+                      tier.active
+                        ? "bg-emerald-50 text-emerald-800"
+                        : "bg-gray-50 text-gray-800"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span>{tier.milestone}</span>
+                    </div>
+                  </div>
+
+                  <div className="p-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {tier.rewards.map((reward, rewardIndex) => (
+                        <div
+                          key={rewardIndex}
+                          className={`flex items-start gap-2 ${
+                            reward.type === "special"
+                              ? "text-purple-600"
+                              : reward.type === "currency"
+                              ? "text-emerald-600"
+                              : "text-blue-600"
+                          }`}
+                        >
+                          <span>•</span>
+                          <span>{reward.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  );
+}

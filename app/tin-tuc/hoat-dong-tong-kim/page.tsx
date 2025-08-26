@@ -72,16 +72,14 @@ export default function TongKimPage() {
               {rewardTiers.map((tier, index) => (
                 <div
                   key={index}
-                  className={`bg-white rounded-xl border ${
-                    tier.active ? "border-emerald-200" : "border-gray-200"
-                  } shadow-sm overflow-hidden`}
+                  className={`bg-white rounded-xl border ${tier.active ? "border-emerald-200" : "border-gray-200"
+                    } shadow-sm overflow-hidden`}
                 >
                   <div
-                    className={`px-4 py-3 font-medium ${
-                      tier.active
+                    className={`px-4 py-3 font-medium ${tier.active
                         ? "bg-emerald-50 text-emerald-800"
                         : "bg-gray-50 text-gray-800"
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center justify-between">
                       <span>{tier.milestone}</span>
@@ -93,13 +91,12 @@ export default function TongKimPage() {
                       {tier.rewards.map((reward, rewardIndex) => (
                         <div
                           key={rewardIndex}
-                          className={`flex items-start gap-2 ${
-                            reward.type === "special"
+                          className={`flex items-start gap-2 ${reward.type === "special"
                               ? "text-purple-600"
                               : reward.type === "currency"
-                              ? "text-emerald-600"
-                              : "text-blue-600"
-                          }`}
+                                ? "text-emerald-600"
+                                : "text-blue-600"
+                            }`}
                         >
                           <span>•</span>
                           <span>{reward.text}</span>
