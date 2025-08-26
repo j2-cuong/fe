@@ -3,52 +3,11 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { GameNavigation } from "@/components/game-navigation";
+import { tanThuyHoangData } from "@/data/activities/tan-thuy-hoang";
 
-export const metadata: Metadata = {
-    title: "Tần Lăng & Tần Thủy Hoàng - Kiếm Thế Thần Kiếm",
-    description:
-        "Lịch và phần thưởng Tần Lăng & Tần Thủy Hoàng trong Kiếm Thế Thần Kiếm",
-};
+export const metadata: Metadata = tanThuyHoangData.meta;
 
-// Dữ liệu phần thưởng (Tần Thủy Hoàng)
-const rewardTiers = [
-    {
-        milestone: "Kết Liễu",
-        rewards: [
-            { type: "special", text: "2 Hòa Thị Ngọc" },
-            { type: "currency", text: "100 vạn đồng" },
-            { type: "currency", text: "3 viên Huyền tinh 8" },
-        ],
-        active: true,
-    },
-    {
-        milestone: "Mức 80%",
-        rewards: [
-            { type: "special", text: "1 viên Hòa Thị Ngọc" },
-            { type: "currency", text: "50 vạn đồng" },
-            { type: "currency", text: "2 viên Huyền tinh 8" },
-        ],
-        active: false,
-    },
-    {
-        milestone: "Mức 50%",
-        rewards: [
-            { type: "special", text: "1 viên Hòa Thị Ngọc" },
-            { type: "currency", text: "50 vạn đồng" },
-            { type: "currency", text: "1 viên Huyền tinh 8" },
-        ],
-        active: false,
-    },
-    {
-        milestone: "Mức 20%",
-        rewards: [
-            { type: "special", text: "1 viên Hòa Thị Ngọc" },
-            { type: "currency", text: "50 vạn đồng" },
-            { type: "currency", text: "1 viên Huyền tinh 8" },
-        ],
-        active: false,
-    },
-];
+// Dữ liệu phần thưởng import từ data
 
 export default function TanThuyHoangPage() {
     return (
@@ -65,7 +24,7 @@ export default function TanThuyHoangPage() {
                 <article className="rounded-2xl p-8 shadow-lg bg-white">
                     <header className="mb-8">
                         <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
-                            Tần Lăng & Tần Thủy Hoàng
+                            {tanThuyHoangData.headerTitle}
                         </h1>
 
                         <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-6">
@@ -87,26 +46,15 @@ export default function TanThuyHoangPage() {
                     </header>
 
                     <div className="prose prose-lg max-w-none">
-                        <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">Thời gian & Quy định</h2>
+                        <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">{tanThuyHoangData.scheduleTitle}</h2>
                         <div className="bg-blue-50 p-4 rounded-lg mb-6">
                             <ul className="space-y-2 text-blue-700">
-                                <li>Đẳng cấp tối thiểu 100 (Trong top 500 tài phú)</li>
-                                <li>Mỗi ngày tối đa 2 tiếng trong Tần Lăng, không cộng dồn</li>
-                                <li>Tần Thủy Hoàng (mở giới hạn 109)</li>
-                                <li>Mỗi bang hội tham gia tối đa 102 thành viên</li>
-                                <li>Riêng thứ 2: báo danh HKL là TTH chung, báo danh 150 thành viên</li>
-                                <li>Thời gian Tần Thủy Hoàng 22:00 – 23:30: chỉ thành viên đã đăng ký mới được vào Tần Lăng</li>
-                                <li>22:00: tất cả nhân vật đang ở Tần Lăng sẽ được đưa về thành</li>
-                                <li>Tần Thủy Hoàng xuất hiện lúc 22:40 mỗi ngày tại Tần Lăng 5</li>
-                                <li>Cổng Tần Lăng 5 đóng lúc 23:30</li>
-                                <li>Nếu TTH chưa bị tiêu diệt, thành viên đang ở tầng 5 tiếp tục tham gia đến khi TTH bị tiêu diệt; ngoài tầng 5 không thể vào lại</li>
-                                <li>Phần trăm sát thương sẽ reset về 0 nếu 30s-1 phút không gây sát thương lên TTH</li>
-                                <li>Bảng xếp hạng sát thương cập nhật mỗi khi TTH thay đổi 1% HP; thay đổi xếp hạng sẽ thông báo trên Kênh Hệ Thống</li>
+                                {tanThuyHoangData.schedule?.map((s, i) => (<li key={i}>{s}</li>))}
                             </ul>
                         </div>
 
                         <div className="space-y-6">
-                            {rewardTiers.map((tier, index) => (
+                            {tanThuyHoangData.rewardTiers.map((tier, index) => (
                                 <div
                                     key={index}
                                     className={`bg-white rounded-xl border ${tier.active ? "border-emerald-200" : "border-gray-200"}

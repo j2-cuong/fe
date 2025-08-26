@@ -5,7 +5,7 @@ import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { GameNavigation } from "@/components/game-navigation";
 
 export const metadata: Metadata = {
-  title: "Hoạt động Quà Open - Kiếm Thế Thần Kiếm",
+  title: "Quà Open - Kiếm Thế Thần Kiếm",
   description:
     "Nhận quà hỗ trợ tân thủ khi tham gia Open server và các loại code trong game Kiếm Thế Thần Kiếm",
 };
@@ -139,13 +139,12 @@ export default function QuaOpenPage() {
                       {code.rewards.map((reward, rewardIndex) => (
                         <div
                           key={rewardIndex}
-                          className={`flex items-start gap-2 ${
-                            reward.type === "special"
+                          className={`flex items-start gap-2 ${reward.type === "special"
                               ? "text-purple-600"
                               : reward.type === "currency"
-                              ? "text-emerald-600"
-                              : "text-blue-600"
-                          }`}
+                                ? "text-emerald-600"
+                                : "text-blue-600"
+                            }`}
                         >
                           <span>•</span>
                           <span>{reward.text}</span>

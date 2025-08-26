@@ -3,12 +3,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { GameNavigation } from "@/components/game-navigation";
+import { loanPhaiData } from "@/data/activities/loan-phai";
 
-export const metadata: Metadata = {
-  title: "Hoạt động Loạn Phái - Kiếm Thế Thần Kiếm",
-  description:
-    "Thời gian và phần thưởng hoạt động Loạn Phái trong Kiếm Thế Thần Kiếm",
-};
+export const metadata: Metadata = loanPhaiData.meta;
 
 // Định nghĩa dữ liệu phần thưởng (Loạn Phái)
 const rewardTiers = [
@@ -96,7 +93,7 @@ export default function LoanPhaiPage() {
         <article className="rounded-2xl p-8 shadow-lg bg-white">
           <header className="mb-8">
             <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
-              Hoạt động Loạn Phái
+              {loanPhaiData.headerTitle}
             </h1>
 
             <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-6">
@@ -118,24 +115,28 @@ export default function LoanPhaiPage() {
           </header>
 
           <div className="prose prose-lg max-w-none">
-            <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">Thời gian diễn ra</h2>
-            <div className="bg-blue-50 p-4 rounded-lg mb-6">
-              <ul className="space-y-2 text-blue-700">
-                <li>Diễn ra vào thứ 6 hàng tuần</li>
-                <li>Báo danh từ 19:50</li>
-                <li>Tham gia hoạt động từ 20:00 đến 20:45</li>
-              </ul>
-            </div>
+            {loanPhaiData.schedule?.length ? (
+              <>
+                <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">{loanPhaiData.scheduleTitle}</h2>
+                <div className="bg-blue-50 p-4 rounded-lg mb-6">
+                  <ul className="space-y-2 text-blue-700">
+                    {loanPhaiData.schedule.map((s, i) => (<li key={i}>{s}</li>))}
+                  </ul>
+                </div>
+              </>
+            ) : null}
 
-            <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-lg mb-6">
-              <h3 className="font-bold text-yellow-800 flex items-center gap-2 mb-2">
-                <span className="text-xl">⚠️</span> Lưu ý quan trọng:
-              </h3>
-              <p className="text-yellow-700">Không diễn ra hoạt động tìm cờ</p>
-            </div>
+            {loanPhaiData.notes?.length ? (
+              <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-lg mb-6">
+                <h3 className="font-bold text-yellow-800 flex items-center gap-2 mb-2">
+                  <span className="text-xl">⚠️</span> Lưu ý quan trọng:
+                </h3>
+                {loanPhaiData.notes.map((n, i) => (<p key={i} className="text-yellow-700">{n}</p>))}
+              </div>
+            ) : null}
 
             <div className="space-y-6">
-              {rewardTiers.map((tier, index) => (
+              {loanPhaiData.rewardTiers.map((tier, index) => (
                 <div
                   key={index}
                   className={`bg-white rounded-xl border ${tier.active ? "border-emerald-200" : "border-gray-200"
@@ -155,18 +156,24 @@ export default function LoanPhaiPage() {
                   <div className="p-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {tier.rewards.map((reward, rewardIndex) => (
-                        <div
-                          key={rewardIndex}
-                          className={`flex items-start gap-2 ${reward.type === "special"
-                            ? "text-purple-600"
-                            : reward.type === "currency"
-                              ? "text-emerald-600"
-                              : "text-blue-600"
-                            }`}
-                        >
-                          <span>•</span>
-                          <span>{reward.text}</span>
-                        </div>
+                        reward.type === "stats" ? (
+                          <ul key={rewardIndex} className="text-red-600 list-disc pl-6 space-y-1">
+                            {reward.stats.map((s, i) => (<li key={i}>{s}</li>))}
+                          </ul>
+                        ) : (
+                          <div
+                            key={rewardIndex}
+                            className={`flex items-start gap-2 ${reward.type === "special"
+                              ? "text-purple-600"
+                              : reward.type === "currency"
+                                ? "text-emerald-600"
+                                : "text-blue-600"
+                              }`}
+                          >
+                            <span>•</span>
+                            <span>{reward.text}</span>
+                          </div>
+                        )
                       ))}
                     </div>
                   </div>
