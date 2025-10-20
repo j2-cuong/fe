@@ -6,51 +6,50 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Home, Newspaper, Users, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { mainNavigation } from "@/data/navigation";
 
 export function GameNavigation() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  const menuItems = [
-    { href: "/", label: "Trang chủ", icon: Home },
-    { href: "/tin-tuc", label: "Tin tức", icon: Newspaper },
-    {
-      href: "https://www.facebook.com/profile.php?id=61579595318543",
-      label: "Cộng đồng",
-      icon: Users,
-      external: true,
-    },
-    { href: "/group", label: "Group", icon: MessageCircle },
-  ];
+  const getIcon = (iconName: string) => {
+    const icons = {
+      Home,
+      Newspaper,
+      Users,
+      MessageCircle,
+    };
+    return icons[iconName as keyof typeof icons] || Home;
+  };
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-b border-emerald-200"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-blue-200"
       role="navigation"
       aria-label="Menu điều hướng chính"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14 sm:h-16">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           <Link
             href="/"
-            className="flex items-center space-x-2 group"
+            className="flex items-center space-x-3 group hover-lift"
             aria-label="Về trang chủ Kiếm Thế Thần Kiếm"
           >
-            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center bg-gradient-to-br from-blue-500 to-cyan-600 p-1">
               <img
                 src="/logo.png"
                 alt="Kiếm Thế Thần Kiếm - Kiếm Thế PC 2009"
-                className="w-full h-full object-cover object-center !bg-transparent rounded-full"
+                className="w-full h-full object-cover object-center rounded-full"
               />
             </div>
-            <span className="font-serif font-bold text-lg sm:text-xl text-gray-800 group-hover:text-emerald-600 transition-colors">
+            <span className="font-bold text-lg sm:text-xl text-gradient group-hover:scale-105 transition-transform">
               Kiếm Thế Thần Kiếm
             </span>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-            {menuItems.map((item) => {
-              const Icon = item.icon;
+          <div className="hidden md:flex items-center space-x-2">
+            {mainNavigation.map((item) => {
+              const Icon = getIcon(item.icon);
               const isActive = pathname === item.href;
               return (
                 <Link
@@ -59,15 +58,15 @@ export function GameNavigation() {
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener noreferrer" : undefined}
                   className={cn(
-                    "flex items-center space-x-2 transition-colors duration-200 py-2 px-3 rounded-md",
+                    "flex items-center space-x-2 transition-all duration-300 py-3 px-4 rounded-xl hover-lift",
                     isActive
-                      ? "text-emerald-600 bg-emerald-50"
+                      ? "bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-600 border border-blue-400/30"
                       : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
                   )}
                   aria-current={isActive ? "page" : undefined}
                 >
                   <Icon className="w-4 h-4" aria-hidden="true" />
-                  <span>{item.label}</span>
+                  <span className="font-medium">{item.label}</span>
                 </Link>
               );
             })}
@@ -76,7 +75,7 @@ export function GameNavigation() {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden text-gray-700"
+            className="md:hidden text-gray-700 hover:text-blue-600 hover:bg-blue-50"
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
@@ -93,13 +92,13 @@ export function GameNavigation() {
         {isOpen && (
           <div
             id="mobile-menu"
-            className="md:hidden py-4 border-t border-emerald-200"
+            className="md:hidden py-4 border-t border-blue-200"
             role="menu"
             aria-label="Menu di động"
           >
             <div className="flex flex-col space-y-2">
-              {menuItems.map((item) => {
-                const Icon = item.icon;
+              {mainNavigation.map((item) => {
+                const Icon = getIcon(item.icon);
                 const isActive = pathname === item.href;
                 return (
                   <Link
@@ -108,9 +107,9 @@ export function GameNavigation() {
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noopener noreferrer" : undefined}
                     className={cn(
-                      "flex items-center space-x-2 transition-colors duration-200 px-3 py-2 rounded-md",
+                      "flex items-center space-x-2 transition-all duration-300 px-4 py-3 rounded-xl hover-lift",
                       isActive
-                        ? "text-emerald-600 bg-emerald-50"
+                        ? "bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-600 border border-blue-400/30"
                         : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
                     )}
                     onClick={() => setIsOpen(false)}
@@ -118,7 +117,7 @@ export function GameNavigation() {
                     aria-current={isActive ? "page" : undefined}
                   >
                     <Icon className="w-4 h-4" aria-hidden="true" />
-                    <span>{item.label}</span>
+                    <span className="font-medium">{item.label}</span>
                   </Link>
                 );
               })}

@@ -1,20 +1,13 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Montserrat, Open_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const montserrat = Montserrat({
+const inter = Inter({
   subsets: ["latin", "vietnamese"],
   display: "swap",
-  variable: "--font-montserrat",
-  weight: ["400", "600", "700", "900"],
-});
-
-const openSans = Open_Sans({
-  subsets: ["latin", "vietnamese"],
-  display: "swap",
-  variable: "--font-open-sans",
-  weight: ["400", "500", "600"],
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -123,7 +116,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" className={`${montserrat.variable} ${openSans.variable}`}>
+    <html lang="vi" className={`${inter.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -158,7 +151,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <meta name="msapplication-TileColor" content="#059669" />
+        <meta name="msapplication-TileColor" content="#8b5cf6" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
         <meta
           name="google-site-verification"
@@ -166,9 +159,8 @@ export default function RootLayout({
         />
         <style>{`
           html {
-            font-family: ${openSans.style.fontFamily};
-            --font-sans: ${openSans.variable};
-            --font-serif: ${montserrat.variable};
+            font-family: ${inter.style.fontFamily};
+            --font-sans: ${inter.variable};
           }
         `}</style>
       </head>

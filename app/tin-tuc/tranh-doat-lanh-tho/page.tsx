@@ -24,7 +24,7 @@ export default function TranhDoatLanhThoPage() {
 
         <article className="rounded-2xl p-8 shadow-lg bg-white">
           <header className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl md:text-4xl  font-bold text-gray-900 mb-4">
               Tranh Đoạt Lãnh Thổ
             </h1>
 
@@ -47,7 +47,7 @@ export default function TranhDoatLanhThoPage() {
           </header>
 
           <div className="prose prose-lg max-w-none">
-            <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl  font-bold text-gray-900 mb-4">
               Thời gian diễn ra
             </h2>
             <div className="bg-blue-50 p-4 rounded-lg mb-6">

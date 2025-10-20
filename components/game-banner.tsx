@@ -38,7 +38,7 @@ export function GameBanner() {
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-200/30 to-blue-200/30 rounded-2xl blur-xl animate-pulse backdrop-blur-sm"></div>
 
               <div className="relative z-10 p-6 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-2xl mt-[80%]">
-                <h2 className="text-2xl font-serif font-bold text-white mb-3 text-shadow-lg">
+                <h2 className="text-2xl  font-bold text-white mb-3 text-shadow-lg">
                   Tải Game Ngay
                 </h2>
                 <div className="flex flex-col gap-3 justify-center items-center mb-4">

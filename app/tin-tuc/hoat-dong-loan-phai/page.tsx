@@ -92,7 +92,7 @@ export default function LoanPhaiPage() {
 
         <article className="rounded-2xl p-8 shadow-lg bg-white">
           <header className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl md:text-4xl  font-bold text-gray-900 mb-4">
               {loanPhaiData.headerTitle}
             </h1>
 
@@ -117,10 +117,14 @@ export default function LoanPhaiPage() {
           <div className="prose prose-lg max-w-none">
             {loanPhaiData.schedule?.length ? (
               <>
-                <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">{loanPhaiData.scheduleTitle}</h2>
+                <h2 className="text-2xl  font-bold text-gray-900 mb-4">
+                  {loanPhaiData.scheduleTitle}
+                </h2>
                 <div className="bg-blue-50 p-4 rounded-lg mb-6">
                   <ul className="space-y-2 text-blue-700">
-                    {loanPhaiData.schedule.map((s, i) => (<li key={i}>{s}</li>))}
+                    {loanPhaiData.schedule.map((s, i) => (
+                      <li key={i}>{s}</li>
+                    ))}
                   </ul>
                 </div>
               </>
@@ -131,7 +135,11 @@ export default function LoanPhaiPage() {
                 <h3 className="font-bold text-yellow-800 flex items-center gap-2 mb-2">
                   <span className="text-xl">⚠️</span> Lưu ý quan trọng:
                 </h3>
-                {loanPhaiData.notes.map((n, i) => (<p key={i} className="text-yellow-700">{n}</p>))}
+                {loanPhaiData.notes.map((n, i) => (
+                  <p key={i} className="text-yellow-700">
+                    {n}
+                  </p>
+                ))}
               </div>
             ) : null}
 
@@ -139,14 +147,16 @@ export default function LoanPhaiPage() {
               {loanPhaiData.rewardTiers.map((tier, index) => (
                 <div
                   key={index}
-                  className={`bg-white rounded-xl border ${tier.active ? "border-emerald-200" : "border-gray-200"
-                    } shadow-sm overflow-hidden`}
+                  className={`bg-white rounded-xl border ${
+                    tier.active ? "border-emerald-200" : "border-gray-200"
+                  } shadow-sm overflow-hidden`}
                 >
                   <div
-                    className={`px-4 py-3 font-medium ${tier.active
-                      ? "bg-emerald-50 text-emerald-800"
-                      : "bg-gray-50 text-gray-800"
-                      }`}
+                    className={`px-4 py-3 font-medium ${
+                      tier.active
+                        ? "bg-emerald-50 text-emerald-800"
+                        : "bg-gray-50 text-gray-800"
+                    }`}
                   >
                     <div className="flex items-center justify-between">
                       <span>{tier.milestone}</span>
@@ -155,26 +165,32 @@ export default function LoanPhaiPage() {
 
                   <div className="p-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {tier.rewards.map((reward, rewardIndex) => (
+                      {tier.rewards.map((reward, rewardIndex) =>
                         reward.type === "stats" ? (
-                          <ul key={rewardIndex} className="text-red-600 list-disc pl-6 space-y-1">
-                            {reward.stats.map((s, i) => (<li key={i}>{s}</li>))}
+                          <ul
+                            key={rewardIndex}
+                            className="text-red-600 list-disc pl-6 space-y-1"
+                          >
+                            {reward.stats.map((s, i) => (
+                              <li key={i}>{s}</li>
+                            ))}
                           </ul>
                         ) : (
                           <div
                             key={rewardIndex}
-                            className={`flex items-start gap-2 ${reward.type === "special"
-                              ? "text-purple-600"
-                              : reward.type === "currency"
+                            className={`flex items-start gap-2 ${
+                              reward.type === "special"
+                                ? "text-purple-600"
+                                : reward.type === "currency"
                                 ? "text-emerald-600"
                                 : "text-blue-600"
-                              }`}
+                            }`}
                           >
                             <span>•</span>
                             <span>{reward.text}</span>
                           </div>
                         )
-                      ))}
+                      )}
                     </div>
                   </div>
                 </div>

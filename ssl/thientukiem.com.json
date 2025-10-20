@@ -1,0 +1,19 @@
+{
+	"sans": [
+		"thientukiem.com"
+	],
+	"issuer_data": {
+		"url": "https://acme-v02.api.letsencrypt.org/acme/cert/06f0762fda60de35989c105e2f00da949f0c",
+		"ca": "https://acme-v02.api.letsencrypt.org/directory",
+		"account": "https://acme-v02.api.letsencrypt.org/acme/acct/2611649977",
+		"renewal_info": {
+			"suggestedWindow": {
+				"start": "2025-10-20T16:54:58Z",
+				"end": "2025-10-22T12:05:47Z"
+			},
+			"_uniqueIdentifier": "jw0TovYuftFQbDMYOF1ZjiNykco.BvB2L9pg3jWYnBBeLwDalJ8M",
+			"_retryAfter": "2025-08-23T04:09:25.5581621+07:00",
+			"_selectedTime": "2025-10-22T05:46:58Z"
+		}
+	}
+}

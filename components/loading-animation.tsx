@@ -1,28 +1,28 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 export function LoadingAnimation() {
-  const [isLoading, setIsLoading] = useState(true)
-  const [progress, setProgress] = useState(0)
+  const [isLoading, setIsLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     // Simulate loading progress
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
-          clearInterval(progressInterval)
-          setTimeout(() => setIsLoading(false), 500)
-          return 100
+          clearInterval(progressInterval);
+          setTimeout(() => setIsLoading(false), 500);
+          return 100;
         }
-        return prev + Math.random() * 15
-      })
-    }, 100)
+        return prev + Math.random() * 15;
+      });
+    }, 100);
 
-    return () => clearInterval(progressInterval)
-  }, [])
+    return () => clearInterval(progressInterval);
+  }, []);
 
-  if (!isLoading) return null
+  if (!isLoading) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
@@ -42,8 +42,12 @@ export function LoadingAnimation() {
         </div>
 
         {/* Loading text with typewriter effect */}
-        <h2 className="mt-8 text-xl font-serif font-bold text-primary animate-pulse">Đang tải game...</h2>
-        <p className="mt-2 text-sm text-muted-foreground animate-fade-in">Chuẩn bị trải nghiệm tuyệt vời</p>
+        <h2 className="mt-8 text-xl  font-bold text-primary animate-pulse">
+          Đang tải game...
+        </h2>
+        <p className="mt-2 text-sm text-muted-foreground animate-fade-in">
+          Chuẩn bị trải nghiệm tuyệt vời
+        </p>
 
         {/* Progress bar */}
         <div className="mt-6 w-64 mx-auto">
@@ -53,7 +57,9 @@ export function LoadingAnimation() {
               style={{ width: `${Math.min(progress, 100)}%` }}
             ></div>
           </div>
-          <p className="text-xs text-muted-foreground mt-2">{Math.round(Math.min(progress, 100))}%</p>
+          <p className="text-xs text-muted-foreground mt-2">
+            {Math.round(Math.min(progress, 100))}%
+          </p>
         </div>
 
         {/* Floating particles */}
@@ -73,5 +79,5 @@ export function LoadingAnimation() {
         </div>
       </div>
     </div>
-  )
+  );
 }

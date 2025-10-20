@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { MessageCircle, X, Phone, Mail, MapPin } from "lucide-react"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { MessageCircle, X, Phone, Mail, MapPin } from "lucide-react";
 
 export function ContactButton() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="fixed right-6 z-50" style={{ bottom: "25vh" }}>
       {isOpen && (
         <div className="mb-4 bg-background/95 backdrop-blur-md border border-primary/20 rounded-2xl p-6 shadow-2xl animate-slide-up min-w-[280px]">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-serif font-bold text-lg text-foreground">Liên Hệ</h3>
+            <h3 className=" font-bold text-lg text-foreground">Liên Hệ</h3>
             <Button
               variant="ghost"
               size="sm"
@@ -39,7 +39,9 @@ export function ContactButton() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-border">
-            <p className="text-xs text-muted-foreground text-center">Hỗ trợ 24/7 cho game thủ</p>
+            <p className="text-xs text-muted-foreground text-center">
+              Hỗ trợ 24/7 cho game thủ
+            </p>
           </div>
         </div>
       )}
@@ -54,5 +56,5 @@ export function ContactButton() {
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
       </Button>
     </div>
-  )
+  );
 }

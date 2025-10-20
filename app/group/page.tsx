@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { QrCode, MessageCircle, Users, ArrowRight } from "lucide-react";
 import { GameNavigation } from "@/components/game-navigation";
 
@@ -20,7 +19,7 @@ export default function GroupPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Header */}
           <div className="text-center mb-5">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent mb-4">
+            <h1 className="text-4xl md:text-5xl  font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent mb-4">
               Tham Gia Group Zalo
             </h1>
           </div>
@@ -35,10 +34,14 @@ export default function GroupPage() {
                   <span>Quét mã QR</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent className="!px-0 lg:!px-6 pt-2 lg:pl-8 lg:pr-8">
-                <div className="w-80 h-80 mx-auto bg-gradient-to-br from-emerald-100 to-blue-100 rounded-lg flex items-center justify-center mb-6 border-2 border-emerald-200">
+              <CardContent className="!px-0 lg:!px-6 pt-6 lg:pl-8 lg:pr-8">
+                <div className="w-80 h-80 mx-auto  rounded-lg flex items-center justify-center mb-6 ">
                   <div className="text-center">
-                    <QrCode className="w-60 h-60 text-emerald-600 mx-auto mb-2" />
+                    <img
+                      src="qrCodezl.png"
+                      alt="Kiếm sĩ trong thế giới võ hiệp"
+                      className="bg-transparent"
+                    />
                     <p className="text-sm text-slate-600">QR Code Group Zalo</p>
                   </div>
                 </div>

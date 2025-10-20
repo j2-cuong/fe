@@ -3,12 +3,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { useState, useMemo } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Calendar, User, Clock, ArrowRight, Search } from "lucide-react";
+import { Calendar, User, Clock, ArrowRight, Search, ChevronLeft, ChevronRight, Star, Sparkles, Filter } from "lucide-react";
 import { GameNavigation } from "@/components/game-navigation";
-import { time } from "console";
+import { newsArticles, newsCategories, getArticlesByCategory, searchArticles } from "@/data/news";
 
 const metadata: Metadata = {
   title: "Tin Tức Game - Cập nhật sự kiện và hoạt động mới nhất",
@@ -17,275 +16,26 @@ const metadata: Metadata = {
   keywords: "tin tức game, sự kiện game, hoạt động game, cập nhật game",
 };
 
-const newsArticles = [
-  {
-    id: 16,
-    title: "Phúc lợi nạp thẻ ( Active ) ",
-    slug: "phuc-loi-nap-the",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt: "Tìm hiểu về các phúc lợi và ưu đãi khi nạp thẻ vào game",
-    category: "Nạp thẻ",
-    featured: true,
-    timeLife: "Hàng ngày",
-  },
-  {
-    id: 1,
-    title: "Bạch Hổ Đường (Active)",
-    slug: "hoat-dong-bach-ho-duong",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt:
-      "Khám phá hoạt động Bạch Hổ Đường với phần thưởng hấp dẫn và thử thách khốc liệt",
-    category: "Hoạt Động",
-    featured: false,
-    timeLife: "Hàng ngày",
-  },
-  {
-    id: 2,
-    title: "Tiêu Dao Cốc(Active)",
-    slug: "hoat-dong-tieu-dao-coc",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt:
-      "Tham gia hoạt động Tiêu Dao Cốc để nhận được những phần thưởng giá trị",
-    category: "Hoạt Động",
-    timeLife: "Hàng ngày",
-  },
-  {
-    id: 3,
-    title: "Tống Kim (Active)",
-    slug: "hoat-dong-tong-kim",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt:
-      "Cuộc chiến Tống kim với những trận đấu kịch tính và phần thưởng khủng",
-    category: "Hoạt Động",
-    timeLife: "Hàng ngày",
-  },
-  {
-    id: 4,
-    title: "Tần thủy hoàng",
-    slug: "tan-thuy-hoang",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt: "Thử thách từ hoàng đế Tần Thủy Hoàng với những nhiệm vụ đặc biệt",
-    category: "Hoạt Động",
-    timeLife: "Hàng ngày",
-  },
-  {
-    id: 5,
-    title: "Hỏa kỳ lân",
-    slug: "hoa-ky-lan",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt:
-      "Chinh phục linh thú huyền thoại Hỏa kỳ lân để nhận phần thưởng độc quyền",
-    category: "Hoạt Động",
-    timeLife: "Thứ 2",
-  },
-  {
-    id: 6,
-    title: "Tranh đoạt lãnh thổ",
-    slug: "tranh-doat-lanh-tho",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt: "Tham gia tranh đoạt lãnh thổ để khẳng định sức mạnh bang hội",
-    category: "Hoạt Động",
-    timeLife: "Thứ 7 và Chủ Nhật",
-  },
-  {
-    id: 7,
-    title: "Bao Vạn Đồng (Active)",
-    slug: "hoat-dong-bao-van-dong",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt:
-      "Sự kiện Bao Vạn Đồng với cơ hội nhận được vô số phần thưởng giá trị",
-    category: "Hoạt Động",
-    timeLife: "Hàng ngày",
-  },
-  {
-    id: 8,
-    title: "Võ Lâm liên đấu (song đấu) (Active)",
-    slug: "hoat-dong-vo-lam-lien-dau",
-    author: "Mod PvP",
-    publishedAt: "01/08/2025",
-    excerpt:
-      "Võ Lâm liên đấu - nơi các cao thủ thể hiện kỹ năng trong những trận song đấu",
-    category: "Hoạt Động",
-    timeLife: "Thứ 2 và Thứ 4",
-  },
-  {
-    id: 9,
-    title: "Quân Doanh (Active)",
-    slug: "quan-doanh",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt:
-      "Tham gia Quân Doanh để trải nghiệm chiến thuật và nhận phần thưởng hấp dẫn",
-    category: "Hoạt Động",
-    timeLife: "Hàng ngày",
-  },
-  {
-    id: 11,
-    title: "Đoán hoa đăng (Active)",
-    slug: "doan-hoa-dang",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt:
-      "Tham gia đoán hoa đăng để thử vận may và nhận phần thưởng bất ngờ",
-    category: "Mini Game",
-    timeLife: "Thứ 2 và thứ 4",
-  },
-  {
-    id: 12,
-    title: "Thương Hội (Active)",
-    slug: "thuong-hoi",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt: "Hoạt động Thương Hội - nơi giao thương và trao đổi vật phẩm",
-    category: "Hoạt Động",
-    timeLife: "Hàng ngày",
-  },
-  {
-    id: 13,
-    title: "Thi đấu Loạn Phái",
-    slug: "hoat-dong-loan-phai",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt: "Tham gia hoạt động Loạn Phái để thể hiện sức mạnh",
-    category: "Hoạt Động",
-    timeLife: "Thứ 6",
-  },
-  {
-    id: 14,
-    title: "Thi đấu Môn Phái",
-    slug: "hoat-dong-mon-phai",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt: "Tham gia hoạt động Môn Phái",
-    category: "Hoạt Động",
-    timeLife: "Thứ 3",
-  },
-  {
-    id: 15,
-    title: "Hoàng Thành Tranh Bá (CTC)(Active)",
-    slug: "hoat-dong-hoang-thanh-tranh-ba",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt: "Hoàng Thành Tranh Bá - cuộc chiến quyết định ai sẽ là bá chủ",
-    category: "Hoạt Động",
-    timeLife: "Thứ 5",
-  },
-  {
-    id: 16,
-    title: "Các lỗi thường gặp",
-    slug: "cac-loi-thuong-gap",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt: "Hướng dẫn khắc phục các lỗi thường gặp khi chơi game",
-    category: "Hỗ trợ",
-    timeLife: "",
-  },
-  {
-    id: 17,
-    title: "Thưởng Cấp (Active)",
-    slug: "hoat-dong-thuong-cap",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt: "Thưởng cấp",
-    category: "Hoạt Động",
-    timeLife: "",
-  },
-  {
-    id: 18,
-    title: "Quà Open (Active)",
-    slug: "hoat-dong-qua-open",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt: "Hỗ trợ Open",
-    category: "Hoạt Động",
-    timeLife: "",
-  },
-  {
-    id: 19,
-    title: "Săn Hải Tặc (Active)",
-    slug: "hoat-dong-hai-tac",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt: "Tham gia truy nã hải tặc để nhận được những phần thưởng hấp dẫn",
-    category: "Hoạt Động",
-    timeLife: "Hàng ngày",
-  },
-  {
-    id: 20,
-    title: "Boss Võ Lâm Cao Thủ (Active)",
-    slug: "hoat-dong-vo-lam-cao-thu",
-    author: "Administrator",
-    publishedAt: "01/08/2025",
-    excerpt:
-      "Tham gia săn boss Võ Lâm Cao Thủ để nhận được những phần thưởng hấp dẫn",
-    category: "Hoạt Động",
-    timeLife: "Hàng ngày",
-  },
-];
 
-const filterCategories = [
-  {
-    id: "all",
-    label: "Tất cả",
-    color: "bg-gray-100 text-gray-700 hover:bg-gray-200",
-  },
-  {
-    id: "Hoạt Động",
-    label: "Hoạt Động",
-    color: "bg-emerald-100 text-emerald-700 hover:bg-emerald-200",
-  },
-  {
-    id: "PK",
-    label: "PK",
-    color: "bg-red-100 text-red-700 hover:bg-red-200",
-  },
-  {
-    id: "Event",
-    label: "Event",
-    color: "bg-orange-100 text-orange-700 hover:bg-orange-200",
-  },
-
-  {
-    id: "Mini Game",
-    label: "Mini Game",
-    color: "bg-pink-100 text-pink-700 hover:bg-pink-200",
-  },
-
-  {
-    id: "Hỗ trợ",
-    label: "Hỗ trợ",
-    color: "bg-blue-100 text-blue-700 hover:bg-blue-200",
-  },
-];
+const ITEMS_PER_PAGE = 10;
 
 export default function NewsPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeFilter, setActiveFilter] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const filteredArticles = useMemo(() => {
-    const filtered = newsArticles.filter((article) => {
-      const matchesSearch =
-        article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        article.timeLife.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesFilter =
-        activeFilter === "all" || article.category === activeFilter;
+    let filtered = newsArticles;
+    
+    if (searchTerm) {
+      filtered = searchArticles(searchTerm);
+    }
+    
+    if (activeFilter !== "all") {
+      filtered = getArticlesByCategory(activeFilter);
+    }
 
-      if (article.category === "Nạp thẻ") {
-        return matchesSearch;
-      }
-
-      return matchesSearch && matchesFilter;
-    });
-
+    // Prioritize recharge articles
     const rechargeArticle = filtered.find(
       (article) => article.category === "Nạp thẻ"
     );
@@ -303,54 +53,92 @@ export default function NewsPage() {
     (article) => !article.featured
   );
 
+  // Pagination logic
+  const totalPages = Math.ceil(regularArticles.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const currentArticles = regularArticles.slice(startIndex, endIndex);
+
+  // Reset to page 1 when filter changes
+  const handleFilterChange = (filterId: string) => {
+    setActiveFilter(filterId);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearchTerm(value);
+    setCurrentPage(1);
+  };
+
+  const getCategoryColor = (category: string) => {
+    switch (category) {
+      case "Sự kiện":
+        return "bg-emerald-100 text-emerald-700";
+      case "PvP":
+        return "bg-red-100 text-red-700";
+      case "Boss":
+        return "bg-orange-100 text-orange-700";
+      case "Guild":
+        return "bg-purple-100 text-purple-700";
+      case "Lộ trình":
+        return "bg-purple-100 text-purple-700";
+      default:
+        return "bg-blue-100 text-blue-700";
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       <GameNavigation />
-      <div className="pt-20">
+      <div className="pt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent mb-4">
-              Tin Tức Game
-            </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <div className="text-center mb-12 animate-fade-in-up">
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full flex items-center justify-center">
+                <Sparkles className="w-8 h-8 text-white" />
+              </div>
+              <h1 className="text-4xl md:text-6xl font-bold text-gradient">
+                Tin Tức Game
+              </h1>
+            </div>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Cập nhật những tin tức, sự kiện và hoạt động mới nhất trong cộng
               đồng Kiếm Thế Thần Kiếm
             </p>
           </div>
 
           {/* Search and Filter Section */}
-          <div className="mb-8 space-y-6">
+          <div className="mb-12 space-y-8 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
             {/* Search Bar */}
-            <div className="max-w-md mx-auto ">
+            <div className="max-w-lg mx-auto">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2  w-5 h-5 !text-red-600" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-blue-500" />
                 <Input
                   type="text"
                   placeholder="Tìm kiếm bài viết hoặc thời gian..."
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 pr-4 py-3 w-full bg-white text-black backdrop-blur-sm !border-green-500 focus:!border-green-500 focus:!ring-0 focus:!outline-none"
+                  onChange={(e) => handleSearchChange(e.target.value)}
+                  className="pl-12 pr-4 py-4 w-full bg-white border-blue-200 text-gray-800 placeholder-gray-500 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 rounded-xl shadow-sm"
                 />
               </div>
             </div>
 
             {/* Filter Buttons */}
-            <div className="flex flex-wrap justify-center gap-2">
-              {filterCategories.map((category) => (
+            <div className="flex flex-wrap justify-center gap-3">
+              {newsCategories.map((category) => (
                 <Button
                   key={category.id}
                   variant="ghost"
                   size="sm"
-                  onClick={() => setActiveFilter(category.id)}
-                  className={`${
-                    category.color
-                  } border-2 transition-all duration-200 ${
+                  onClick={() => handleFilterChange(category.id)}
+                  className={`transition-all duration-300 hover-lift ${
                     activeFilter === category.id
-                      ? "border-emerald-400 shadow-lg transform scale-105"
-                      : "border-transparent hover:border-gray-300"
-                  }`}
+                      ? "bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-600 border border-blue-400/30 shadow-lg"
+                      : "text-gray-700 hover:text-blue-600 hover:bg-blue-50 border border-gray-200"
+                  } rounded-xl px-6 py-3`}
                 >
+                  <Filter className="w-4 h-4 mr-2" />
                   {category.label}
                 </Button>
               ))}
@@ -359,129 +147,177 @@ export default function NewsPage() {
             {/* Results Count */}
             <div className="text-center text-sm text-gray-600">
               {searchTerm || activeFilter !== "all" ? (
-                <span>Tìm thấy {filteredArticles.length} bài viết</span>
+                <span>Tìm thấy <span className="text-blue-600 font-semibold">{filteredArticles.length}</span> bài viết</span>
               ) : (
-                <span>Tổng cộng {newsArticles.length} bài viết</span>
+                <span>Tổng cộng <span className="text-blue-600 font-semibold">{newsArticles.length}</span> bài viết</span>
               )}
             </div>
           </div>
 
           {/* Featured Article */}
           {featuredArticle && (
-            <div className="mb-12">
-              <Card className="bg-white/90 backdrop-blur-sm border-emerald-200 shadow-xl shadow-emerald-100/50 overflow-hidden">
-                <div className="grid md:grid-cols-2 gap-0">
-                  <div className="aspect-video md:aspect-auto bg-gradient-to-br from-emerald-100 to-blue-100 flex items-center justify-center ">
-                    <Calendar className="w-16 h-16 text-emerald-600" />
+            <div className="mb-12 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-blue-200 hover-lift">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-full flex items-center justify-center">
+                    <Star className="w-6 h-6 text-white" />
                   </div>
-                  <CardContent className="p-8">
-                    <div className="mb-4">
-                      {/* <span className="inline-block px-3 py-1 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-sm font-medium rounded-full shadow-lg">
-                        Nổi bật
-                      </span> */}
-                    </div>
-                    <CardTitle className="text-2xl font-serif font-bold mb-4 text-gray-800">
-                      {featuredArticle.title}
-                    </CardTitle>
-                    <p className="text-gray-600 mb-6">
-                      {featuredArticle.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-4 text-sm text-gray-500">
-                        <div className="flex items-center space-x-1">
-                          <User className="w-4 h-4 text-blue-500" />
-                          <span>{featuredArticle.author}</span>
-                        </div>
-                        {/* <div className="flex items-center space-x-1">
-                          <Clock className="w-4 h-4 text-orange-500" />
-                          <span>{featuredArticle.publishedAt}</span>
-                        </div> */}
-                      </div>
-                      <Button
-                        asChild
-                        className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg hover:shadow-blue-200 transform hover:scale-105 transition-all duration-200"
-                      >
-                        <Link href={`/tin-tuc/${featuredArticle.slug}`}>
-                          Đọc thêm
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </Link>
-                      </Button>
-                    </div>
-                  </CardContent>
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-800">Bài viết nổi bật</h2>
+                    <p className="text-gray-600">Được đề xuất cho bạn</p>
+                  </div>
                 </div>
-              </Card>
+                
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="aspect-video bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl flex items-center justify-center">
+                    <Calendar className="w-20 h-20 text-blue-500" />
+                  </div>
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-3xl font-bold text-gray-800 mb-4">
+                        {featuredArticle.title}
+                      </h3>
+                      <p className="text-gray-600 text-lg leading-relaxed">
+                        {featuredArticle.excerpt}
+                      </p>
+                    </div>
+                    
+                    <div className="flex items-center gap-4 text-sm text-gray-500">
+                      <div className="flex items-center gap-2">
+                        <User className="w-4 h-4 text-blue-500" />
+                        <span>{featuredArticle.author}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4 text-cyan-500" />
+                        <span>{featuredArticle.timeLife}</span>
+                      </div>
+                    </div>
+                    
+                    <Button
+                      asChild
+                      className="btn-modern text-white px-8 py-4 rounded-xl text-lg font-semibold hover-glow"
+                    >
+                      <Link href={`/tin-tuc/${featuredArticle.slug}`}>
+                        Đọc thêm
+                        <ArrowRight className="w-5 h-5 ml-2" />
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
 
           {/* Articles Grid */}
-          {regularArticles.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {regularArticles.map((article) => (
-                <Card
+          <div className="grid gap-6">
+            {currentArticles.length > 0 ? (
+              currentArticles.map((article, index) => (
+                <div
                   key={article.id}
-                  className="bg-white/90 backdrop-blur-sm border-gray-200 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-100/50 transition-all duration-200 group transform hover:scale-105"
+                  className="bg-white rounded-2xl p-6 shadow-lg border border-blue-200 hover-lift animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <CardHeader>
-                    <div className="flex items-center justify-between mb-2">
-                      <span
-                        className={`inline-block px-2 py-1 text-xs font-medium rounded ${
-                          article.category === "Sự kiện"
-                            ? "bg-emerald-100 text-emerald-700"
-                            : article.category === "PvP"
-                            ? "bg-red-100 text-red-700"
-                            : article.category === "Boss"
-                            ? "bg-orange-100 text-orange-700"
-                            : article.category === "Guild"
-                            ? "bg-purple-100 text-purple-700"
-                            : "bg-blue-100 text-blue-700"
-                        }`}
-                      >
-                        {article.category}
-                      </span>
-                      <span className="text-xs text-gray-500">
-                        {article.publishedAt}
-                      </span>
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center">
+                        <Calendar className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-800 mb-2">
+                          {article.title}
+                        </h3>
+                        <p className="text-gray-600 text-sm leading-relaxed">
+                          {article.excerpt}
+                        </p>
+                      </div>
                     </div>
-                    <CardTitle className="text-lg font-serif font-semibold group-hover:text-emerald-600 transition-colors duration-200">
-                      {article.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 text-sm mb-4">
-                      {article.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-1 text-xs text-gray-500">
-                        <User className="w-3 h-3 text-blue-500" />
+                    <span className={`inline-block px-3 py-1 text-xs font-medium rounded-full ${getCategoryColor(article.category)}`}>
+                      {article.category}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-6 text-sm text-gray-500">
+                      <div className="flex items-center gap-2">
+                        <User className="w-4 h-4 text-blue-500" />
                         <span>{article.author}</span>
                       </div>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        asChild
-                        className="text-blue-600 hover:text-blue-700 hover:bg-blue-50"
-                      >
-                        <Link href={`/tin-tuc/${article.slug}`}>
-                          Đọc thêm
-                          <ArrowRight className="w-3 h-3 ml-1" />
-                        </Link>
-                      </Button>
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4 text-cyan-500" />
+                        <span>{article.timeLife}</span>
+                      </div>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <div className="text-gray-400 mb-4">
-                <Search className="w-16 h-16 mx-auto" />
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      asChild
+                      className="text-blue-600 hover:text-white hover:bg-blue-500 rounded-xl px-6 py-2"
+                    >
+                      <Link href={`/tin-tuc/${article.slug}`}>
+                        Đọc thêm
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="text-center py-16 animate-fade-in-up">
+                <div className="w-24 h-24 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Search className="w-12 h-12 text-blue-500" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                  Không tìm thấy bài viết
+                </h3>
+                <p className="text-gray-600 text-lg">
+                  Thử thay đổi từ khóa tìm kiếm hoặc bộ lọc khác
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-gray-600 mb-2">
-                Không tìm thấy bài viết
-              </h3>
-              <p className="text-gray-500">
-                Thử thay đổi từ khóa tìm kiếm hoặc bộ lọc khác
-              </p>
+            )}
+          </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center space-x-3 mt-12 animate-fade-in-up">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setCurrentPage(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-xl px-4 py-2"
+              >
+                <ChevronLeft className="w-4 h-4" />
+                <span>Trước</span>
+              </Button>
+
+              <div className="flex items-center space-x-2">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <Button
+                    key={page}
+                    variant={currentPage === page ? "default" : "ghost"}
+                    size="sm"
+                    onClick={() => setCurrentPage(page)}
+                    className={`w-10 h-10 rounded-xl ${
+                      currentPage === page
+                        ? "bg-gradient-to-r from-blue-500 to-cyan-600 text-white"
+                        : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
+                    }`}
+                  >
+                    {page}
+                  </Button>
+                ))}
+              </div>
+
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setCurrentPage(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-xl px-4 py-2"
+              >
+                <span>Sau</span>
+                <ChevronRight className="w-4 h-4" />
+              </Button>
             </div>
           )}
         </div>
